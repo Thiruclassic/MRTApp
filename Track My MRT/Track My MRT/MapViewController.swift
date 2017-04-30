@@ -9,8 +9,9 @@
 import UIKit
 import MapKit
 import CoreLocation
+import MessageUI
 
-class MapViewController: UIViewController, CLLocationManagerDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate,MFMessageComposeViewControllerDelegate  {
 
     @IBOutlet weak var mapView: MKMapView!
     
@@ -59,6 +60,25 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     @IBAction func sendLocation(_ sender: UIButton) {
+        if (MFMessageComposeViewController.canSendText()) {
+            let controller = MFMessageComposeViewController()
+            controller.body = "Message Body"
+            controller.recipients = []
+            controller.messageComposeDelegate = self
+            self.present(controller, animated: true, completion: nil)
+        } else {
+            print("Simulators")
+        }
+    }
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        //... handle sms screen actions
+        //TODO
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
     }
 
 }
