@@ -1,41 +1,33 @@
 {
     "station":[
-               {
-               "name":"Lavendar"
-               
-               },
-               {
-               "name":"Pasir Ris"
-               }
+               {"name":"Pasir Ris","stationCode":"PSR"}        ,
+               {"name":"Tampines","stationCode":"TAM"}         ,
+               {"name":"Simei","stationCode":"SIM"}            ,
+               {"name":"Tanah Merah","stationCode":"TNM"}      ,
+               {"name":"Bedok","stationCode":"BDK"}            ,
+               {"name":"Kembangan","stationCode":"KEM"}        ,
+               {"name":"Eunos","stationCode":"EUN"}            ,
+               {"name":"Paya Lebar","stationCode":"PYL"}       ,
+               {"name":"Aljunied","stationCode":"ALJ"}         ,
+               {"name":"Kallang","stationCode":"KAL"}          ,
+               {"name":"Lavender","stationCode":"LVR"}         ,
+               {"name":"Bugis","stationCode":"BGS"}            ,
+               {"name":"City Hall","stationCode":"CTH"}        ,
+               {"name":"Raffles Place","stationCode":"RFP"}    ,
+               {"name":"Tanjong Pagar","stationCode":"TPG"}    ,
+               {"name":"Outram Park","stationCode":"OTP"}      ,
+               {"name":"Tiong Bahru","stationCode":"TIB"}      ,
+               {"name":"Redhill","stationCode":"RDH"}          ,
+               {"name":"Queenstown","stationCode":"QUE"}       ,
+               {"name":"Commonwealth","stationCode":"COM"}     ,
+               {"name":"Buona Vista","stationCode":"BNV"}      ,
+               {"name":"Dover","stationCode":"DVR"}            ,
+               {"name":"Clementi","stationCode":"CLE"}         ,
+               {"name":"Jurong East","stationCode":"JUR"}      ,
+               {"name":"Chinese Garden","stationCode":"CNG"}   ,
+               {"name":"Lakeside","stationCode":"LKS"}         ,
+               {"name":"Boon Lay","stationCode":"BNL"}         ,
+               {"name":"Pioneer","stationCode":"PNR"}          ,
+               {"name":"Joo Koon","stationCode":"JKN"}
                ]
 }
-
-"name":"Pasir Ris"      ,
-"name":"Tampines"       ,
-"name":"Simei"          ,
-"name":"Tanah Merah"    ,
-"name":"Bedok"          ,
-"name":"Kembangan"      ,
-"name":"Eunos"          ,
-"name":"Paya Lebar"     ,
-"name":"Aljunied"       ,
-"name":"Kallang"        ,
-"name":"Lavender"       ,
-"name":"Bugis"          ,
-"name":"City Hall"      ,
-"name":"Raffles Place"  ,
-"name":"Tanjong Pagar"  ,
-"name":"Outram Park"    ,
-"name":"Tiong Bahru"    ,
-"name":"Redhill"        ,
-"name":"Queenstown"     ,
-"name":"Commonwealth"   ,
-"name":"Buona Vista"    ,
-"name":"Dover"          ,
-"name":"Clementi"       ,
-"name":"Jurong East"    ,
-"name":"Chinese Garden" ,
-"name":"Lakeside"       ,
-"name":"Boon Lay"       ,
-"name":"Pioneer"        ,
-"name":"Joo Koon"       
