@@ -21,7 +21,7 @@
 		EEE0EA191EB87B8B0088042D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE0EA181EB87B8B0088042D /* libsqlite3.tbd */; };
 		EEE0EA1C1EB87C060088042D /* TrackMyMrt-Bridging-Header.m in Sources */ = {isa = PBXBuildFile; fileRef = EEE0EA1B1EB87C060088042D /* TrackMyMrt-Bridging-Header.m */; };
 		EEE0EA1E1EB87C630088042D /* DbHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE0EA1D1EB87C630088042D /* DbHandler.swift */; };
-		EEE0EA201EB885200088042D /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = EEE0EA1F1EB885200088042D /* stations.json */; };
+		EEE0EA221EB885E70088042D /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = EEE0EA211EB885E70088042D /* stations.json */; };
 		EEE1D44E1EB342DF005F8A3A /* CustomStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE1D44D1EB342DF005F8A3A /* CustomStationCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,7 +64,7 @@
 		EEE0EA1A1EB87C060088042D /* Track My MRT-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Track My MRT-Bridging-Header.h"; sourceTree = "<group>"; };
 		EEE0EA1B1EB87C060088042D /* TrackMyMrt-Bridging-Header.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TrackMyMrt-Bridging-Header.m"; sourceTree = "<group>"; };
 		EEE0EA1D1EB87C630088042D /* DbHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbHandler.swift; sourceTree = "<group>"; };
-		EEE0EA1F1EB885200088042D /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = stations.json; path = ../../../../Downloads/stations.json; sourceTree = "<group>"; };
+		EEE0EA211EB885E70088042D /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
 		EEE1D44D1EB342DF005F8A3A /* CustomStationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStationCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,7 +118,7 @@
 		EE3C6C4B1EAF204C0007C327 /* Track My MRT */ = {
 			isa = PBXGroup;
 			children = (
-				EEE0EA1F1EB885200088042D /* stations.json */,
+				EEE0EA211EB885E70088042D /* stations.json */,
 				EE3724341EB6D9BF00BE65FA /* StationDataExtractor.swift */,
 				EE3C6C4C1EAF204C0007C327 /* AppDelegate.swift */,
 				EE3C6C4E1EAF204C0007C327 /* HomeViewController.swift */,
@@ -273,7 +273,7 @@
 			files = (
 				EE3C6C591EAF204C0007C327 /* LaunchScreen.storyboard in Resources */,
 				EE3C6C561EAF204C0007C327 /* Assets.xcassets in Resources */,
-				EEE0EA201EB885200088042D /* stations.json in Resources */,
+				EEE0EA221EB885E70088042D /* stations.json in Resources */,
 				EE3C6C541EAF204C0007C327 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
