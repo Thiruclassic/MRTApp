@@ -10,7 +10,13 @@ import UIKit
 
 class RouteViewController : UIViewController{
     
+    
+    var fromStationText:String!
+    var toStationText:String!
+    
     @IBOutlet weak var fromStationLabel: UILabel!
+    
+    @IBOutlet weak var fromStationScrollLabel: UILabel!
     
     @IBOutlet weak var arrivalTimeLabel: UILabel!
 
@@ -23,5 +29,19 @@ class RouteViewController : UIViewController{
     
     @IBAction func share(_ sender: UIButton) {
     }
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+        fromStationLabel.text=fromStationText
+        fromStationScrollLabel.text=fromStationText
+        toStationLabel.text=toStationText
+        
+       // readStationArrivalTime(stnCode: "asd")
+    
+    }
+    
     
 }
