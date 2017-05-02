@@ -8,21 +8,43 @@
 
 import UIKit
 
-class HomeViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate, UISplitViewControllerDelegate{
+class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITableViewDataSource,UITableViewDelegate{
 
-    @IBOutlet weak var fromStation: UIPickerView!
+    @IBOutlet weak var fromDropDown: UITableView!
     
-    @IBOutlet weak var toStation: UIPickerView!
+    @IBOutlet weak var fromStationName:UITextField!
     
-    let stations = ["Clementi","Dover","Haw par villa", "Kent ridge"]
+    @IBOutlet weak var toDropDown: UITableView!
+    
+    @IBOutlet weak var toStationName:UITextField!
+    
+    
+    var stations:Array = [""]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fromDropDown.dataSource=self
+        fromDropDown.delegate=self
+        toDropDown.dataSource=self
+        toDropDown.delegate=self
+        stations=readAllStations()
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
+        
+       // createStationTable()
     }
     
     @IBAction func showRoute(_ sender: UIButton) {
+        
+        //readStationArrivalTime(stnCode: "LVR")
+        
+        let routeViewController=self.storyboard?.instantiateViewController(withIdentifier: ROUTEVIEW_CONTROLLER_ID) as! RouteViewController
+        
+        routeViewController.fromStationText=fromStationName.text
+        routeViewController.toStationText=toStationName.text
+        
+       self.navigationController?.pushViewController(routeViewController, animated: true)
         
     }
     
@@ -32,18 +54,73 @@ class HomeViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
         // Dispose of any resources that can be recreated.
     }
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+    @IBAction func showFromDropDown()
+    {
+        fromDropDown.isHidden=false
+        fromDropDown.reloadData()
+        
     }
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return stations.count
+    
+    @IBAction func showToDropDown()
+    {
+        toDropDown.isHidden=false
+        toDropDown.reloadData()
+        
     }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return stations[row]
+    @IBAction func hideDropDown()
+    {
+        print("textfield hide func")
+        fromDropDown.isHidden=true
+        toDropDown.isHidden=true;
+        
     }
+    
     
     func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController!, ontoPrimaryViewController primaryViewController: UIViewController!) -> Bool{
         return true
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:CustomStationCell!
+        if(tableView==self.fromDropDown)
+        {
+         cell=self.fromDropDown.dequeueReusableCell(withIdentifier: FROM_TABLE_CELL_ID) as! CustomStationCell
+        }
+        else
+        {
+        cell=self.toDropDown.dequeueReusableCell(withIdentifier: TO_TABLE_CELL_ID) as! CustomStationCell
+        }
+        
+        cell?.backgroundColor=UIColor.green
+
+        //print(tableView.restorationIdentifier!)
+       
+        
+        let stationName=stations[indexPath.row] as String
+                cell.stationLabel.text=stationName
+        
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //print(stations.count)
+        return stations.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! CustomStationCell!
+        let title = cell?.stationLabel.text
+        
+        if(tableView==fromDropDown)
+        {
+        fromStationName.text=title
+        }
+        else
+        {
+            toStationName.text=title
+        }
+        tableView.isHidden=true;
     }
 }
 

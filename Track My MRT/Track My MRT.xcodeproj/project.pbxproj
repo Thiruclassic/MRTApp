@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE3724351EB6D9BF00BE65FA /* StationDataExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3724341EB6D9BF00BE65FA /* StationDataExtractor.swift */; };
 		EE3C6C4D1EAF204C0007C327 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3C6C4C1EAF204C0007C327 /* AppDelegate.swift */; };
 		EE3C6C4F1EAF204C0007C327 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3C6C4E1EAF204C0007C327 /* HomeViewController.swift */; };
 		EE3C6C511EAF204C0007C327 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3C6C501EAF204C0007C327 /* MapViewController.swift */; };
@@ -16,6 +17,12 @@
 		EE3C6C641EAF204C0007C327 /* Track_My_MRTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3C6C631EAF204C0007C327 /* Track_My_MRTTests.swift */; };
 		EE3C6C6F1EAF204C0007C327 /* Track_My_MRTUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3C6C6E1EAF204C0007C327 /* Track_My_MRTUITests.swift */; };
 		EE3C6C7D1EB19B0D0007C327 /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3C6C7C1EB19B0D0007C327 /* RouteViewController.swift */; };
+		EE3DD51C1EB2F1C000D5C5C0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3DD51B1EB2F1C000D5C5C0 /* Constants.swift */; };
+		EEE0EA191EB87B8B0088042D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE0EA181EB87B8B0088042D /* libsqlite3.tbd */; };
+		EEE0EA1C1EB87C060088042D /* TrackMyMrt-Bridging-Header.m in Sources */ = {isa = PBXBuildFile; fileRef = EEE0EA1B1EB87C060088042D /* TrackMyMrt-Bridging-Header.m */; };
+		EEE0EA1E1EB87C630088042D /* DbHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE0EA1D1EB87C630088042D /* DbHandler.swift */; };
+		EEE0EA221EB885E70088042D /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = EEE0EA211EB885E70088042D /* stations.json */; };
+		EEE1D44E1EB342DF005F8A3A /* CustomStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE1D44D1EB342DF005F8A3A /* CustomStationCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EE3724341EB6D9BF00BE65FA /* StationDataExtractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationDataExtractor.swift; sourceTree = "<group>"; };
 		EE3C6C491EAF204C0007C327 /* Track My MRT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Track My MRT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE3C6C4C1EAF204C0007C327 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE3C6C4E1EAF204C0007C327 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +59,13 @@
 		EE3C6C6E1EAF204C0007C327 /* Track_My_MRTUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track_My_MRTUITests.swift; sourceTree = "<group>"; };
 		EE3C6C701EAF204C0007C327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE3C6C7C1EB19B0D0007C327 /* RouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
+		EE3DD51B1EB2F1C000D5C5C0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EEE0EA181EB87B8B0088042D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		EEE0EA1A1EB87C060088042D /* Track My MRT-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Track My MRT-Bridging-Header.h"; sourceTree = "<group>"; };
+		EEE0EA1B1EB87C060088042D /* TrackMyMrt-Bridging-Header.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TrackMyMrt-Bridging-Header.m"; sourceTree = "<group>"; };
+		EEE0EA1D1EB87C630088042D /* DbHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbHandler.swift; sourceTree = "<group>"; };
+		EEE0EA211EB885E70088042D /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
+		EEE1D44D1EB342DF005F8A3A /* CustomStationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStationCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEE0EA191EB87B8B0088042D /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +101,7 @@
 				EE3C6C621EAF204C0007C327 /* Track My MRTTests */,
 				EE3C6C6D1EAF204C0007C327 /* Track My MRTUITests */,
 				EE3C6C4A1EAF204C0007C327 /* Products */,
+				EEE0EA171EB87B8A0088042D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +118,8 @@
 		EE3C6C4B1EAF204C0007C327 /* Track My MRT */ = {
 			isa = PBXGroup;
 			children = (
+				EEE0EA211EB885E70088042D /* stations.json */,
+				EE3724341EB6D9BF00BE65FA /* StationDataExtractor.swift */,
 				EE3C6C4C1EAF204C0007C327 /* AppDelegate.swift */,
 				EE3C6C4E1EAF204C0007C327 /* HomeViewController.swift */,
 				EE3C6C501EAF204C0007C327 /* MapViewController.swift */,
@@ -109,6 +128,11 @@
 				EE3C6C551EAF204C0007C327 /* Assets.xcassets */,
 				EE3C6C571EAF204C0007C327 /* LaunchScreen.storyboard */,
 				EE3C6C5A1EAF204C0007C327 /* Info.plist */,
+				EE3DD51B1EB2F1C000D5C5C0 /* Constants.swift */,
+				EEE1D44D1EB342DF005F8A3A /* CustomStationCell.swift */,
+				EEE0EA1B1EB87C060088042D /* TrackMyMrt-Bridging-Header.m */,
+				EEE0EA1A1EB87C060088042D /* Track My MRT-Bridging-Header.h */,
+				EEE0EA1D1EB87C630088042D /* DbHandler.swift */,
 			);
 			path = "Track My MRT";
 			sourceTree = "<group>";
@@ -129,6 +153,14 @@
 				EE3C6C701EAF204C0007C327 /* Info.plist */,
 			);
 			path = "Track My MRTUITests";
+			sourceTree = "<group>";
+		};
+		EEE0EA171EB87B8A0088042D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EEE0EA181EB87B8B0088042D /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +231,7 @@
 				TargetAttributes = {
 					EE3C6C481EAF204C0007C327 = {
 						CreatedOnToolsVersion = 8.3;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					EE3C6C5E1EAF204C0007C327 = {
@@ -240,6 +273,7 @@
 			files = (
 				EE3C6C591EAF204C0007C327 /* LaunchScreen.storyboard in Resources */,
 				EE3C6C561EAF204C0007C327 /* Assets.xcassets in Resources */,
+				EEE0EA221EB885E70088042D /* stations.json in Resources */,
 				EE3C6C541EAF204C0007C327 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,10 +299,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEE1D44E1EB342DF005F8A3A /* CustomStationCell.swift in Sources */,
 				EE3C6C511EAF204C0007C327 /* MapViewController.swift in Sources */,
 				EE3C6C4D1EAF204C0007C327 /* AppDelegate.swift in Sources */,
 				EE3C6C7D1EB19B0D0007C327 /* RouteViewController.swift in Sources */,
 				EE3C6C4F1EAF204C0007C327 /* HomeViewController.swift in Sources */,
+				EEE0EA1E1EB87C630088042D /* DbHandler.swift in Sources */,
+				EE3724351EB6D9BF00BE65FA /* StationDataExtractor.swift in Sources */,
+				EEE0EA1C1EB87C060088042D /* TrackMyMrt-Bridging-Header.m in Sources */,
+				EE3DD51C1EB2F1C000D5C5C0 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,10 +461,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "Track My MRT/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "sg.edu.nus.iss.wlad.FT03.Track-My-MRT";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Track My MRT/Track My MRT-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -434,10 +477,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "Track My MRT/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "sg.edu.nus.iss.wlad.FT03.Track-My-MRT";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Track My MRT/Track My MRT-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -515,6 +561,7 @@
 				EE3C6C751EAF204C0007C327 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EE3C6C761EAF204C0007C327 /* Build configuration list for PBXNativeTarget "Track My MRTTests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +570,7 @@
 				EE3C6C781EAF204C0007C327 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EE3C6C791EAF204C0007C327 /* Build configuration list for PBXNativeTarget "Track My MRTUITests" */ = {
 			isa = XCConfigurationList;
@@ -531,6 +579,7 @@
 				EE3C6C7B1EAF204C0007C327 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
