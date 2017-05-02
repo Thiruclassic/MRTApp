@@ -28,7 +28,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XW4-lv-kfc">
+                            <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XW4-lv-kfc">
                                 <rect key="frame" x="0.0" y="85" width="375" height="145"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -36,7 +36,7 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="TGN-BB-YRp"/>
                                 </connections>
                             </pickerView>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pHz-ZA-YPa">
+                            <pickerView tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pHz-ZA-YPa">
                                 <rect key="frame" x="0.0" y="238" width="375" height="140"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -198,32 +198,14 @@
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
+                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW" customClass="GMSMapView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qS5-ot-N0o">
-                                <rect key="frame" x="0.0" y="28" width="375" height="468"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvn-VE-F8j">
-                                <rect key="frame" x="60" y="517" width="254" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.093129582703113556" green="0.57018685340881348" blue="0.09977789968252182" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Send my Location">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendLocation:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Khh-bl-g35"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="View Map" image="map" id="cPa-gy-q4n"/>
                     <connections>
-                        <outlet property="mapView" destination="qS5-ot-N0o" id="MYa-Ac-ZBC"/>
+                        <outlet property="viewMap" destination="QS5-Rx-YEW" id="QS7-sN-GY5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -260,10 +242,10 @@
             </objects>
             <point key="canvasLocation" x="1141.5999999999999" y="298.2008995502249"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Mrt Tab Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="MrtTabController" customModule="Track_My_MRT" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -299,7 +281,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hh9-Hn-NKZ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fhc-Z9-OCI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fhc-Z9-OCI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -317,7 +299,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="y4f-6P-hyh" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9oy-bI-vs8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9oy-bI-vs8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -339,6 +321,6 @@
         <image name="train" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sfp-fE-tJn"/>
+        <segue reference="LsB-pM-Zf9"/>
     </inferredMetricsTieBreakers>
 </document>
