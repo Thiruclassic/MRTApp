@@ -1,0 +1,41 @@
+{
+    "station":[
+               {
+               "name":"Lavendar"
+               
+               },
+               {
+               "name":"Pasir Ris"
+               }
+               ]
+}
+
+"name":"Pasir Ris"      ,
+"name":"Tampines"       ,
+"name":"Simei"          ,
+"name":"Tanah Merah"    ,
+"name":"Bedok"          ,
+"name":"Kembangan"      ,
+"name":"Eunos"          ,
+"name":"Paya Lebar"     ,
+"name":"Aljunied"       ,
+"name":"Kallang"        ,
+"name":"Lavender"       ,
+"name":"Bugis"          ,
+"name":"City Hall"      ,
+"name":"Raffles Place"  ,
+"name":"Tanjong Pagar"  ,
+"name":"Outram Park"    ,
+"name":"Tiong Bahru"    ,
+"name":"Redhill"        ,
+"name":"Queenstown"     ,
+"name":"Commonwealth"   ,
+"name":"Buona Vista"    ,
+"name":"Dover"          ,
+"name":"Clementi"       ,
+"name":"Jurong East"    ,
+"name":"Chinese Garden" ,
+"name":"Lakeside"       ,
+"name":"Boon Lay"       ,
+"name":"Pioneer"        ,
+"name":"Joo Koon"       
