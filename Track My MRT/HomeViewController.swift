@@ -23,10 +23,7 @@ class HomeViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        self.splitViewController?.delegate = self
-        self.scrollView.maximumZoomScale = 0.5
-        self.scrollView.minimumZoomScale = 5.0
-        self.scrollView.contentSize = self.img.frame.size;
+        
         self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
         
     }
@@ -60,12 +57,7 @@ class HomeViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController!, ontoPrimaryViewController primaryViewController: UIViewController!) -> Bool{
         return true
     }
-    func viewForZoomingInScrollView(scrollView : UIScrollView) -> UIView
-    {
-        
-        return self.img
-        
-    }
+   
 
 }
     
