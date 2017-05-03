@@ -281,7 +281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1141.5999999999999" y="-548.27586206896558"/>
+            <point key="canvasLocation" x="1142" y="-528"/>
         </scene>
         <!--MRT Guide-->
         <scene sceneID="mCg-Op-7av">
@@ -351,7 +351,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hh9-Hn-NKZ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fhc-Z9-OCI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fhc-Z9-OCI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
