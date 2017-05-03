@@ -244,10 +244,6 @@
                                     <action selector="share:" destination="zBM-mu-bKt" eventType="touchUpInside" id="9al-lX-7H2"/>
                                 </connections>
                             </button>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="default_marker.png" translatesAutoresizingMaskIntoConstraints="NO" id="SHu-Dv-d2t">
-                                <rect key="frame" x="274" y="66" width="34" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -265,41 +261,23 @@
             </objects>
             <point key="canvasLocation" x="2973.5999999999999" y="-1173.4632683658172"/>
         </scene>
-        <!--Map View Controller-->
-        <scene sceneID="0W8-ig-3VN">
-            <objects>
-                <viewController id="CDZ-fv-q8n" customClass="MapViewController" customModule="Track_My_MRT" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ku1-2G-rjM"/>
-                        <viewControllerLayoutGuide type="bottom" id="xXl-xq-B7D"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="CiV-jh-2z7" customClass="GMSMapView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="mapView" destination="CiV-jh-2z7" id="W3J-Pw-zm6"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lWP-sR-Ya3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4100" y="-1173"/>
-        </scene>
         <!--View Map-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="8rJ-Kc-sve" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8rJ-Kc-sve" customClass="MapViewController" customModule="Track_My_MRT" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
+                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW" customClass="GMSMapView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="View Map" image="map" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="View Map" image="googleMaps" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="mapView" destination="QS5-Rx-YEW" id="uav-S1-sOV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -335,10 +313,10 @@
             </objects>
             <point key="canvasLocation" x="1141.5999999999999" y="298.2008995502249"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Mrt Tab Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="MrtTabController" customModule="Track_My_MRT" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -347,8 +325,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="wMS-Nc-bkZ" kind="relationship" relationship="viewControllers" id="l8R-61-58U"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="Wty-JE-wgH" kind="relationship" relationship="viewControllers" id="f4O-eD-2vh"/>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -373,7 +351,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hh9-Hn-NKZ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fhc-Z9-OCI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fhc-Z9-OCI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -388,9 +366,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="default_marker.png" width="21" height="38"/>
+        <image name="googleMaps" width="25" height="25"/>
         <image name="home" width="25" height="25"/>
-        <image name="map" width="25" height="25"/>
         <image name="mrtGuide" width="768" height="535"/>
         <image name="share" width="25" height="25"/>
         <image name="train" width="24" height="24"/>

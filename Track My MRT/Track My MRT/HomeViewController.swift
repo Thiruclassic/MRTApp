@@ -21,6 +21,8 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
     
     var stations:Array = [""]
     
+    var selectedStations = RouteModel()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +33,7 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
         stations=readAllStations()
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
-        
+        selectedStations = (tabBarController as! MrtTabController).selectedStations
        // createStationTable()
     }
     
@@ -114,11 +116,13 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
         
         if(tableView==fromDropDown)
         {
-        fromStationName.text=title
+            fromStationName.text=title
+            self.selectedStations.fromStation = title!
         }
         else
         {
             toStationName.text=title
+            self.selectedStations.toStation = title!
         }
         tableView.isHidden=true;
     }
