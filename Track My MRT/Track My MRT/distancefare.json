@@ -1,0 +1,47 @@
+
+
+{
+    "distance":[
+                {"Minimum Distance" : "0.0","Maximum Distance" : "3.2","Adult Fare" : "0.77"}     ,
+                {"Minimum Distance" : "3.3","Maximum Distance" : "4.2","Adult Fare" : "0.87"}     ,
+                {"Minimum Distance" : "4.3","Maximum Distance" : "5.2","Adult Fare" : "0.97"}     ,
+                {"Minimum Distance" : "5.3","Maximum Distance" : "6.2","Adult Fare" : "1.07"}     ,
+                {"Minimum Distance" : "6.3","Maximum Distance" : "7.2","Adult Fare" : "1.16"}     ,
+                {"Minimum Distance" : "7.3","Maximum Distance" : "8.2","Adult Fare" : "1.23"}     ,
+                {"Minimum Distance" : "8.3","Maximum Distance" : "9.2","Adult Fare" : "1.29"}     ,
+                {"Minimum Distance" : "9.3","Maximum Distance" : "10.2","Adult Fare" : "1.33"}    ,
+                {"Minimum Distance" : "10.3","Maximum Distance" : "11.2","Adult Fare" : "1.37"}   ,
+                {"Minimum Distance" : "11.3","Maximum Distance" : "12.2","Adult Fare" : "1.41"}   ,
+                {"Minimum Distance" : "12.3","Maximum Distance" : "13.2","Adult Fare" : "1.45"}   ,
+                {"Minimum Distance" : "13.3","Maximum Distance" : "14.2","Adult Fare" : "1.49"}   ,
+                {"Minimum Distance" : "14.3","Maximum Distance" : "15.2","Adult Fare" : "1.53"}   ,
+                {"Minimum Distance" : "15.3","Maximum Distance" : "16.2","Adult Fare" : "1.57"}   ,
+                {"Minimum Distance" : "16.3","Maximum Distance" : "17.2","Adult Fare" : "1.61"}   ,
+                {"Minimum Distance" : "17.3","Maximum Distance" : "18.2","Adult Fare" : "1.65"}   ,
+                {"Minimum Distance" : "18.3","Maximum Distance" : "19.2","Adult Fare" : "1.69"}   ,
+                {"Minimum Distance" : "19.3","Maximum Distance" : "20.2","Adult Fare" : "1.72"}   ,
+                {"Minimum Distance" : "20.3","Maximum Distance" : "21.2","Adult Fare" : "1.75"}   ,
+                {"Minimum Distance" : "21.3","Maximum Distance" : "22.2","Adult Fare" : "1.78"}   ,
+                {"Minimum Distance" : "22.3","Maximum Distance" : "23.2","Adult Fare" : "1.81"}   ,
+                {"Minimum Distance" : "23.3","Maximum Distance" : "24.2","Adult Fare" : "1.83"}   ,
+                {"Minimum Distance" : "24.3","Maximum Distance" : "25.2","Adult Fare" : "1.85"}   ,
+                {"Minimum Distance" : "25.3","Maximum Distance" : "26.2","Adult Fare" : "1.87"}   ,
+                {"Minimum Distance" : "26.3","Maximum Distance" : "27.2","Adult Fare" : "1.88"}   ,
+                {"Minimum Distance" : "27.3","Maximum Distance" : "28.2","Adult Fare" : "1.89"}   ,
+                {"Minimum Distance" : "28.3","Maximum Distance" : "29.2","Adult Fare" : "1.9"}    ,
+                {"Minimum Distance" : "29.3","Maximum Distance" : "30.2","Adult Fare" : "1.91"}   ,
+                {"Minimum Distance" : "30.3","Maximum Distance" : "31.2","Adult Fare" : "1.92"}   ,
+                {"Minimum Distance" : "31.3","Maximum Distance" : "32.2","Adult Fare" : "1.93"}   ,
+                {"Minimum Distance" : "32.3","Maximum Distance" : "33.2","Adult Fare" : "1.94"}   ,
+                {"Minimum Distance" : "33.3","Maximum Distance" : "34.2","Adult Fare" : "1.95"}   ,
+                {"Minimum Distance" : "34.3","Maximum Distance" : "35.2","Adult Fare" : "1.96"}   ,
+                {"Minimum Distance" : "35.3","Maximum Distance" : "36.2","Adult Fare" : "1.97"}   ,
+                {"Minimum Distance" : "36.3","Maximum Distance" : "37.2","Adult Fare" : "1.98"}   ,
+                {"Minimum Distance" : "37.3","Maximum Distance" : "38.2","Adult Fare" : "1.99"}   ,
+                {"Minimum Distance" : "38.3","Maximum Distance" : "39.2","Adult Fare" : "2"}      ,
+                {"Minimum Distance" : "39.3","Maximum Distance" : "40.2","Adult Fare" : "2.01"}   ,
+                {"Minimum Distance" : "40.2","Maximum Distance" : "100","Adult Fare" : "2.02"}
+                ]
+}
+
+

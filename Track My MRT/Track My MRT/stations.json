@@ -1,0 +1,33 @@
+{
+ 	   "station":[
+                  {"name":"Pasir Ris","stationCode":"PSR","distance" : "0"}          ,
+                  {"name":"Tampines","stationCode":"TAM","distance" : "2.4"}         ,
+                  {"name":"Simei","stationCode":"SIM","distance" : "3.8"}            ,
+                  {"name":"Tanah Merah","stationCode":"TNM","distance" : "6.3"}      ,
+                  {"name":"Bedok","stationCode":"BDK","distance" : "8.2"}            ,
+                  {"name":"Kembangan","stationCode":"KEM","distance" : "10.1"}       ,
+                  {"name":"Eunos","stationCode":"EUN","distance" : "11.3"}           ,
+                  {"name":"Paya Lebar","stationCode":"PYL","distance" : "12.4"}      ,
+                  {"name":"Aljunied","stationCode":"ALJ","distance" : "13.5"}        ,
+                  {"name":"Kallang","stationCode":"KAL","distance" : "14.9"}         ,
+                  {"name":"Lavender","stationCode":"LVR","distance" : "16"}          ,
+                  {"name":"Bugis","stationCode":"BGS","distance" : "17.1"}           ,
+                  {"name":"City Hall","stationCode":"CTH","distance" : "18.1"}       ,
+                  {"name":"Raffles Place","stationCode":"RFP","distance" : "19.2"}   ,
+                  {"name":"Tanjong Pagar","stationCode":"TPG","distance" : "20.3"}   ,
+                  {"name":"Outram Park","stationCode":"OTP","distance" : "21.3"}     ,
+                  {"name":"Tiong Bahru","stationCode":"TIB","distance" : "22.8"}     ,
+                  {"name":"Redhill","stationCode":"RDH","distance" : "24"}           ,
+                  {"name":"Queenstown","stationCode":"QUE","distance" : "25.4"}      ,
+                  {"name":"Commonwealth","stationCode":"COM","distance" : "26.6"}    ,
+                  {"name":"Buona Vista","stationCode":"BNV","distance" : "25.9"}     ,
+                  {"name":"Dover","stationCode":"DVR","distance" : "27.3"}           ,
+                  {"name":"Clementi","stationCode":"CLE","distance" : "29"}          ,
+                  {"name":"Jurong East","stationCode":"JUR","distance" : "32.5"}     ,
+                  {"name":"Chinese Garden","stationCode":"CNG","distance" : "34"}    ,
+                  {"name":"Lakeside","stationCode":"LKS","distance" : "35.4"}        ,
+                  {"name":"Boon Lay","stationCode":"BNL","distance" : "37.1"}        ,
+                  {"name":"Pioneer","stationCode":"PNR","distance" : "38.1"}         ,
+                  {"name":"Joo Koon","stationCode":"JKN","distance" : "40.7"}
+                  ]
+}
