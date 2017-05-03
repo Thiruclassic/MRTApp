@@ -35,6 +35,8 @@
 		EEE02A431EB9A47600EA6047 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE02A421EB9A47600EA6047 /* libc++.tbd */; };
 		EEE02A451EB9A48800EA6047 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE02A441EB9A48800EA6047 /* libicucore.tbd */; };
 		EEE02A471EB9A49800EA6047 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE02A461EB9A49800EA6047 /* libz.tbd */; };
+		EEE02A491EB9D37200EA6047 /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE02A481EB9D37200EA6047 /* RouteModel.swift */; };
+		EEE02A4B1EB9D3EE00EA6047 /* MrtTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE02A4A1EB9D3EE00EA6047 /* MrtTabController.swift */; };
 		EEE0EA191EB87B8B0088042D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE0EA181EB87B8B0088042D /* libsqlite3.tbd */; };
 		EEE0EA1C1EB87C060088042D /* TrackMyMrt-Bridging-Header.m in Sources */ = {isa = PBXBuildFile; fileRef = EEE0EA1B1EB87C060088042D /* TrackMyMrt-Bridging-Header.m */; };
 		EEE0EA1E1EB87C630088042D /* DbHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE0EA1D1EB87C630088042D /* DbHandler.swift */; };
@@ -94,6 +96,8 @@
 		EEE02A421EB9A47600EA6047 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		EEE02A441EB9A48800EA6047 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		EEE02A461EB9A49800EA6047 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		EEE02A481EB9D37200EA6047 /* RouteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteModel.swift; sourceTree = "<group>"; };
+		EEE02A4A1EB9D3EE00EA6047 /* MrtTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MrtTabController.swift; sourceTree = "<group>"; };
 		EEE0EA181EB87B8B0088042D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		EEE0EA1A1EB87C060088042D /* Track My MRT-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Track My MRT-Bridging-Header.h"; sourceTree = "<group>"; };
 		EEE0EA1B1EB87C060088042D /* TrackMyMrt-Bridging-Header.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TrackMyMrt-Bridging-Header.m"; sourceTree = "<group>"; };
@@ -174,6 +178,7 @@
 				EE3C6C4E1EAF204C0007C327 /* HomeViewController.swift */,
 				EE3C6C501EAF204C0007C327 /* MapViewController.swift */,
 				EE3C6C7C1EB19B0D0007C327 /* RouteViewController.swift */,
+				EEE02A4A1EB9D3EE00EA6047 /* MrtTabController.swift */,
 				EE3C6C521EAF204C0007C327 /* Main.storyboard */,
 				EEE02A2C1EB9A36500EA6047 /* GoogleMaps.bundle */,
 				EEE02A2A1EB9A30D00EA6047 /* GoogleMapsBase.framework */,
@@ -187,6 +192,7 @@
 				EEE0EA1B1EB87C060088042D /* TrackMyMrt-Bridging-Header.m */,
 				EEE0EA1A1EB87C060088042D /* Track My MRT-Bridging-Header.h */,
 				EEE0EA1D1EB87C630088042D /* DbHandler.swift */,
+				EEE02A481EB9D37200EA6047 /* RouteModel.swift */,
 			);
 			path = "Track My MRT";
 			sourceTree = "<group>";
@@ -370,6 +376,8 @@
 				EEE1D44E1EB342DF005F8A3A /* CustomStationCell.swift in Sources */,
 				EE3C6C511EAF204C0007C327 /* MapViewController.swift in Sources */,
 				EE3C6C4D1EAF204C0007C327 /* AppDelegate.swift in Sources */,
+				EEE02A4B1EB9D3EE00EA6047 /* MrtTabController.swift in Sources */,
+				EEE02A491EB9D37200EA6047 /* RouteModel.swift in Sources */,
 				EE3C6C7D1EB19B0D0007C327 /* RouteViewController.swift in Sources */,
 				EE3C6C4F1EAF204C0007C327 /* HomeViewController.swift in Sources */,
 				EEE0EA1E1EB87C630088042D /* DbHandler.swift in Sources */,

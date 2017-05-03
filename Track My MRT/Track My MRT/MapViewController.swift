@@ -7,34 +7,48 @@
 //
 
 import UIKit
-import MapKit
+import GoogleMaps
 import CoreLocation
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
 
+   
     @IBOutlet var mapView: GMSMapView!
     
     var locationManager = CLLocationManager()
     
+    var selectedStations = RouteModel()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        selectedStations = (tabBarController as! MrtTabController).selectedStations
         // User Location
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("from: \(selectedStations.fromStation) :: to: \(selectedStations.toStation)")
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation = locations.last
         
-        let camera = GMSCameraPosition.camera(withLatitude: userLocation!.coordinate.latitude,
-                                              longitude: userLocation!.coordinate.longitude, zoom: 13.0)
+        let camera = GMSCameraPosition.camera(withLatitude: userLocation!.coordinate.latitude, longitude: userLocation!.coordinate.longitude, zoom: 10.0)
+        let coordinates = CLLocationCoordinate2DMake(userLocation!.coordinate.latitude, userLocation!.coordinate.longitude)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        mapView.settings.myLocationButton = true
         mapView.isMyLocationEnabled = true
+        let marker = GMSMarker(position: coordinates)
+        marker.title = "I am here"
+        marker.map = self.mapView
         self.view = mapView
+        
+        
         
         locationManager.stopUpdatingLocation()
     }
@@ -42,7 +56,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     
