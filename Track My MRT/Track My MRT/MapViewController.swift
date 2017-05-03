@@ -12,54 +12,39 @@ import CoreLocation
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
 
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet var mapView: GMSMapView!
     
-    var locationManager: CLLocationManager!
+    var locationManager = CLLocationManager()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager = CLLocationManager()
+        
+        // User Location
         locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
     }
     
-    func locationManager(_ manager: CLLocationManager,
-                         didUpdateLocations locations: [CLLocation]) {
-        let userLocation = locations[0].coordinate
-        print("\(String(describing: userLocation.latitude)),\(String(describing: userLocation.longitude))")
-        annotateMap(userLocation)
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation = locations.last
+        
+        let camera = GMSCameraPosition.camera(withLatitude: userLocation!.coordinate.latitude,
+                                              longitude: userLocation!.coordinate.longitude, zoom: 13.0)
+        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        mapView.isMyLocationEnabled = true
+        self.view = mapView
+        
         locationManager.stopUpdatingLocation()
     }
     
-    func annotateMap (_ newCoordinate : CLLocationCoordinate2D) {
-        // set region on the map
-        let latDelta:CLLocationDegrees = 0.01
-        let longDelta:CLLocationDegrees = 0.01
-        let theSpan:MKCoordinateSpan = MKCoordinateSpanMake(latDelta,
-                                                            longDelta)
-        
-        let myLocation:CLLocationCoordinate2D = newCoordinate
-        let theRegion:MKCoordinateRegion =
-            MKCoordinateRegionMake(myLocation, theSpan)
-        self.mapView.setRegion(theRegion, animated: true)
-        self.mapView.mapType = MKMapType.standard
-        
-        // add annotation
-        let myHomePin = MKPointAnnotation()
-        myHomePin.coordinate = newCoordinate
-        myHomePin.title = "I am here"
-        self.mapView.addAnnotation(myHomePin)
-    }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func sendLocation(_ sender: UIButton) {
-    }
-
+    
 }
 
