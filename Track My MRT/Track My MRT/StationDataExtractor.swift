@@ -8,100 +8,87 @@
 
 import Foundation
 
-let fileName:String! = "stations"
-let fileType:String! = "json"
+
 
 func readAllStations() -> Array<String>
 {
     var stationArray = Array<String>()
     
-    let path=Bundle.main.path(forResource: fileName, ofType: fileType)
     
-    let  jsonData=try? NSData(contentsOfFile: path!, options: NSData.ReadingOptions.mappedIfSafe)
-    
-  
-    let jsonResult:NSDictionary = try! JSONSerialization.jsonObject(with: jsonData as! Data , options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
-    
-    
-    
-    let stations:[NSDictionary] = jsonResult[JSON_ROOT_ELEMENT] as! [NSDictionary]
+    let stations:[NSDictionary] = readJSONData(fileName:STATION_JSON_FILE,fileType:JSON_TYPE,rootElement:STATION_ROOT_ELEMENT)
     
     for station:NSDictionary in stations
     {
         let name = String(describing: station[STATION_NAME]!)
         stationArray.append(name)
-
-        print(name)
     }
     
     return stationArray
 
 }
 
-
-func readStationArrivalTime(stnCode:String) -> String
+func readJSONData(fileName:String,fileType:String,rootElement:String) -> [NSDictionary]
 {
-    let endpoint: String = MRT_ARRTIVAL_URL
-    guard let mrtURL = URL(string: endpoint) else {
-        print("Error: cannot create URL")
-        return ""
+    let path=Bundle.main.path(forResource: fileName, ofType: fileType)
+    
+    let  jsonData=try? NSData(contentsOfFile: path!, options: NSData.ReadingOptions.mappedIfSafe)
+    
+    
+    let jsonResult:NSDictionary = try! JSONSerialization.jsonObject(with: jsonData as! Data , options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+    
+    
+    
+    return jsonResult[rootElement] as! [NSDictionary]
+}
+
+func computeLocalArrivalTime(nextTrain:String,subTrain:String,time:String) -> [String]
+{
+    let calendar = Calendar.current
+    
+    var arrivalTimes:[String] = [nextTrain,subTrain]
+    
+    
+    
+    let components:[String]=time.components(separatedBy: "-")
+    var dateComponents=DateComponents()
+    dateComponents.year=Int(components[0])
+    dateComponents.month=Int(components[1])
+    dateComponents.day=Int(components[2])
+    dateComponents.second=Int(components[5])
+    dateComponents.timeZone=TimeZone(abbreviation: SINGAPORE_TIMEZONE)
+    
+    
+    
+    for arrivalTime in arrivalTimes
+    {
+        
+        var hour:Int! = Int(components[3])
+        var minute:Int! = Int(components[4])
+        
+        guard Int(arrivalTime) != nil
+            else {
+            print(ERROR_MESSAGE, "Error in Train Arrival Data")
+            return arrivalTimes
+        }
+        minute = minute + Int(arrivalTime)!
+        if(minute>=60)
+        {
+            minute = minute % 60
+            hour = hour + 1
+        }
+        
+        dateComponents.hour=hour
+        dateComponents.minute=minute
+
+        let localdateTime = calendar.date(from: dateComponents)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = DATE_FORMAT
+        dateFormatter.timeZone = TimeZone(abbreviation: SINGAPORE_TIMEZONE)
+        arrivalTimes[arrivalTimes.index(of: arrivalTime)!] = dateFormatter.string(from: localdateTime!)
     }
-   
+    print(calendar)
+ 
     
-    var mrtUrlRequest = URLRequest(url: mrtURL)
-    
-    
-    let postString : String?
-    postString=POST_KEY + stnCode
-    
-    mrtUrlRequest.httpBody=postString!.data(using: String.Encoding.utf8)
-    
-    mrtUrlRequest.httpMethod = "POST"
-       
-    
-    
-    
-    let session = URLSession.shared
-    
-    let task = session.dataTask(with: mrtUrlRequest) {
-        (data, response, error) in
-        guard error == nil else {
-            print("error calling POST on API")
-            print(error)
-            return
-        }
-        
-             guard let responseData = data else {
-            print("Error: did not receive data")
-            return
-        }
-        
-        
-        let httpStatus = response as? HTTPURLResponse
-        print("status: \(httpStatus?.statusCode)")
-        // parse the result as JSON, since that's what the API provides
-        do {
-            guard let receivedMRTData = try JSONSerialization.jsonObject(with: responseData,
-                                                                      options: []) as? [String: Any] else {
-                                                                        print("Could not get JSON from responseData as dictionary")
-                                                                        return
-            }
-            print("Train Arrival Data: " + receivedMRTData.description)
-            
-            guard let todoID = receivedMRTData["platform1"] as? AnyObject,let one=todoID["direction"] as? String
-                else {
-                    print("Could not get MRTData from JSON")
-                    return
-            }
-            
-            print("The ID is: \(one)")
-        } catch let err {
-            print("error parsing response from POST on /todos")
-            print(err.localizedDescription)
-            return
-        }
-    }
-    task.resume()
-    
-    return ""
+    return arrivalTimes
 }
