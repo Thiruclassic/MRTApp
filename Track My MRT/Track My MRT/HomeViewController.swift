@@ -33,20 +33,33 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
         stations=readAllStations()
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
-        selectedStations = (tabBarController as! MrtTabController).selectedStations
-       // createStationTable()
+        
+        createTables()
     }
     
     @IBAction func showRoute(_ sender: UIButton) {
         
-        //readStationArrivalTime(stnCode: "LVR")
         
+        if(fromStationName.text != toStationName.text)
+        {
         let routeViewController=self.storyboard?.instantiateViewController(withIdentifier: ROUTEVIEW_CONTROLLER_ID) as! RouteViewController
         
-        routeViewController.fromStationText=fromStationName.text
-        routeViewController.toStationText=toStationName.text
+         self.navigationController?.pushViewController(routeViewController, animated: true)
         
-       self.navigationController?.pushViewController(routeViewController, animated: true)
+        let stationData:StationData = getStationData(fromStation: fromStationName.text!, toStation: toStationName.text!)
+    
+        routeViewController.stationData=stationData
+        }
+        else
+        {
+            let alertPopUp:UIAlertController = UIAlertController(title: "Alert", message: "Destination Station is same as Source", preferredStyle: UIAlertControllerStyle.alert)
+            let cancelAction = UIAlertAction(title: "OK", style: .cancel) { action -> Void in
+            }
+            alertPopUp.addAction(cancelAction)
+            self.present(alertPopUp, animated: true, completion: nil)
+        }
+        
+      
         
     }
     
