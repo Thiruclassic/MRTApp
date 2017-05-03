@@ -268,7 +268,6 @@
             </objects>
             <point key="canvasLocation" x="2971.875" y="-1173.5915492957747"/>
         </scene>
-        <!--Map View Controller-->
         <scene sceneID="0W8-ig-3VN">
             <objects>
                 <viewController id="CDZ-fv-q8n" customClass="MapViewController" customModule="Track_My_MRT" customModuleProvider="target" sceneMemberID="viewController">
@@ -292,21 +291,24 @@
         <!--View Map-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="8rJ-Kc-sve" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8rJ-Kc-sve" customClass="MapViewController" customModule="Track_My_MRT" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW" customClass="GMSMapView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="View Map" image="map" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="View Map" image="googleMaps" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="mapView" destination="QS5-Rx-YEW" id="uav-S1-sOV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1141.5999999999999" y="-548.27586206896558"/>
+            <point key="canvasLocation" x="1142" y="-528"/>
         </scene>
         <!--MRT Guide-->
         <scene sceneID="mCg-Op-7av">
@@ -338,10 +340,10 @@
             </objects>
             <point key="canvasLocation" x="1141.5999999999999" y="298.2008995502249"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Mrt Tab Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="MrtTabController" customModule="Track_My_MRT" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -350,8 +352,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="wMS-Nc-bkZ" kind="relationship" relationship="viewControllers" id="l8R-61-58U"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="Wty-JE-wgH" kind="relationship" relationship="viewControllers" id="f4O-eD-2vh"/>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -391,8 +393,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="googleMaps" width="25" height="25"/>
         <image name="home" width="25" height="25"/>
-        <image name="map" width="25" height="25"/>
         <image name="mrtGuide" width="768" height="535"/>
         <image name="train" width="24" height="24"/>
     </resources>
