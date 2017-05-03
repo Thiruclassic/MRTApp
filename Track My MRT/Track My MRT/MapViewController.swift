@@ -20,6 +20,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     var selectedStations = RouteModel()
     
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         selectedStations = (tabBarController as! MrtTabController).selectedStations
@@ -33,6 +35,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         print("from: \(selectedStations.fromStation) :: to: \(selectedStations.toStation)")
+        locateStations(self.selectedStations.fromStation)
+        locateStations(self.selectedStations.toStation)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -51,6 +55,24 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         
         locationManager.stopUpdatingLocation()
+    }
+    
+    func locateStations(_ address: String) {
+        
+        let geocoder = CLGeocoder()
+        let searchAddress = address + " MRT"
+        geocoder.geocodeAddressString(searchAddress, completionHandler:
+            {(placemarks, error) -> Void in
+                if let placemark = placemarks?[0] {
+                    let marker = GMSMarker(position: placemark.location!.coordinate)
+                    marker.title = address + " MRT"
+                    marker.map = self.mapView
+                }
+                else {
+                    print("Not found")
+                }
+        })
+
     }
     
     
