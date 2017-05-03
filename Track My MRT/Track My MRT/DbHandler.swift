@@ -20,14 +20,16 @@ func createTables()
     createStationTable()
     createDistanceTable()
     
-   // dropTables()
+    //dropTables()
 }
 
 func openDatabase() -> Bool
 {
-      let dbDir = DB_PATH + "?trackmymrt.sqllite"
+    let dbDir = DB_PATH + "?trackmymrt.sqllite"
     
-    if(sqlite3_open(dbDir, &mrtDb) == SQLITE_OK)
+    let returnCode=sqlite3_open(dbDir, &mrtDb)
+   
+    if(returnCode == SQLITE_OK)
     {
         return true
     }
