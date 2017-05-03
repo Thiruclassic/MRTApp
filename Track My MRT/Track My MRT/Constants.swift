@@ -36,7 +36,7 @@ let MRT_ARRTIVAL_URL="https://mrtapi.com/api/v1.1/getTrainArrival"
 
 let POST_KEY="APIKey=0203098492592377&stnCode="
 
-let DB_PATH = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+let DB_PATH = NSSearchPathForDirectoriesInDomains(.documentationDirectory, .userDomainMask, true)[0] as String
 
 
 //VIEW IDENTIFIERS
