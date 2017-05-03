@@ -18,6 +18,23 @@
 		EE3C6C6F1EAF204C0007C327 /* Track_My_MRTUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3C6C6E1EAF204C0007C327 /* Track_My_MRTUITests.swift */; };
 		EE3C6C7D1EB19B0D0007C327 /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3C6C7C1EB19B0D0007C327 /* RouteViewController.swift */; };
 		EE3DD51C1EB2F1C000D5C5C0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3DD51B1EB2F1C000D5C5C0 /* Constants.swift */; };
+		EEE02A281EB9A2EC00EA6047 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE02A261EB9A2EC00EA6047 /* GoogleMaps.framework */; };
+		EEE02A291EB9A2EC00EA6047 /* GoogleMapsCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE02A271EB9A2EC00EA6047 /* GoogleMapsCore.framework */; };
+		EEE02A2B1EB9A30D00EA6047 /* GoogleMapsBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE02A2A1EB9A30D00EA6047 /* GoogleMapsBase.framework */; };
+		EEE02A2D1EB9A36500EA6047 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EEE02A2C1EB9A36500EA6047 /* GoogleMaps.bundle */; };
+		EEE02A2F1EB9A3A100EA6047 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE02A2E1EB9A3A100EA6047 /* Accelerate.framework */; };
+		EEE02A311EB9A3A800EA6047 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE02A301EB9A3A800EA6047 /* AVFoundation.framework */; };
+		EEE02A331EB9A3B800EA6047 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE02A321EB9A3B800EA6047 /* CoreData.framework */; };
+		EEE02A351EB9A3C100EA6047 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE02A341EB9A3C100EA6047 /* CoreLocation.framework */; };
+		EEE02A371EB9A3D400EA6047 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE02A361EB9A3D400EA6047 /* CoreText.framework */; };
+		EEE02A3A1EB9A3E700EA6047 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE02A381EB9A3E700EA6047 /* GLKit.framework */; };
+		EEE02A3B1EB9A3E700EA6047 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE02A391EB9A3E700EA6047 /* OpenGLES.framework */; };
+		EEE02A3D1EB9A40900EA6047 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE02A3C1EB9A40900EA6047 /* ImageIO.framework */; };
+		EEE02A3F1EB9A42600EA6047 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE02A3E1EB9A42600EA6047 /* QuartzCore.framework */; };
+		EEE02A411EB9A44B00EA6047 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE02A401EB9A44B00EA6047 /* SystemConfiguration.framework */; };
+		EEE02A431EB9A47600EA6047 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE02A421EB9A47600EA6047 /* libc++.tbd */; };
+		EEE02A451EB9A48800EA6047 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE02A441EB9A48800EA6047 /* libicucore.tbd */; };
+		EEE02A471EB9A49800EA6047 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE02A461EB9A49800EA6047 /* libz.tbd */; };
 		EEE0EA191EB87B8B0088042D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE0EA181EB87B8B0088042D /* libsqlite3.tbd */; };
 		EEE0EA1C1EB87C060088042D /* TrackMyMrt-Bridging-Header.m in Sources */ = {isa = PBXBuildFile; fileRef = EEE0EA1B1EB87C060088042D /* TrackMyMrt-Bridging-Header.m */; };
 		EEE0EA1E1EB87C630088042D /* DbHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE0EA1D1EB87C630088042D /* DbHandler.swift */; };
@@ -60,6 +77,23 @@
 		EE3C6C701EAF204C0007C327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE3C6C7C1EB19B0D0007C327 /* RouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
 		EE3DD51B1EB2F1C000D5C5C0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EEE02A261EB9A2EC00EA6047 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		EEE02A271EB9A2EC00EA6047 /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsCore.framework; sourceTree = "<group>"; };
+		EEE02A2A1EB9A30D00EA6047 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsBase.framework; sourceTree = "<group>"; };
+		EEE02A2C1EB9A36500EA6047 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
+		EEE02A2E1EB9A3A100EA6047 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		EEE02A301EB9A3A800EA6047 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		EEE02A321EB9A3B800EA6047 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		EEE02A341EB9A3C100EA6047 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		EEE02A361EB9A3D400EA6047 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		EEE02A381EB9A3E700EA6047 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		EEE02A391EB9A3E700EA6047 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		EEE02A3C1EB9A40900EA6047 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		EEE02A3E1EB9A42600EA6047 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		EEE02A401EB9A44B00EA6047 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		EEE02A421EB9A47600EA6047 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		EEE02A441EB9A48800EA6047 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		EEE02A461EB9A49800EA6047 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		EEE0EA181EB87B8B0088042D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		EEE0EA1A1EB87C060088042D /* Track My MRT-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Track My MRT-Bridging-Header.h"; sourceTree = "<group>"; };
 		EEE0EA1B1EB87C060088042D /* TrackMyMrt-Bridging-Header.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TrackMyMrt-Bridging-Header.m"; sourceTree = "<group>"; };
@@ -73,6 +107,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEE02A471EB9A49800EA6047 /* libz.tbd in Frameworks */,
+				EEE02A451EB9A48800EA6047 /* libicucore.tbd in Frameworks */,
+				EEE02A431EB9A47600EA6047 /* libc++.tbd in Frameworks */,
+				EEE02A411EB9A44B00EA6047 /* SystemConfiguration.framework in Frameworks */,
+				EEE02A3F1EB9A42600EA6047 /* QuartzCore.framework in Frameworks */,
+				EEE02A3D1EB9A40900EA6047 /* ImageIO.framework in Frameworks */,
+				EEE02A3A1EB9A3E700EA6047 /* GLKit.framework in Frameworks */,
+				EEE02A3B1EB9A3E700EA6047 /* OpenGLES.framework in Frameworks */,
+				EEE02A371EB9A3D400EA6047 /* CoreText.framework in Frameworks */,
+				EEE02A351EB9A3C100EA6047 /* CoreLocation.framework in Frameworks */,
+				EEE02A331EB9A3B800EA6047 /* CoreData.framework in Frameworks */,
+				EEE02A311EB9A3A800EA6047 /* AVFoundation.framework in Frameworks */,
+				EEE02A2F1EB9A3A100EA6047 /* Accelerate.framework in Frameworks */,
+				EEE02A281EB9A2EC00EA6047 /* GoogleMaps.framework in Frameworks */,
+				EEE02A2B1EB9A30D00EA6047 /* GoogleMapsBase.framework in Frameworks */,
+				EEE02A291EB9A2EC00EA6047 /* GoogleMapsCore.framework in Frameworks */,
 				EEE0EA191EB87B8B0088042D /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -125,6 +175,10 @@
 				EE3C6C501EAF204C0007C327 /* MapViewController.swift */,
 				EE3C6C7C1EB19B0D0007C327 /* RouteViewController.swift */,
 				EE3C6C521EAF204C0007C327 /* Main.storyboard */,
+				EEE02A2C1EB9A36500EA6047 /* GoogleMaps.bundle */,
+				EEE02A2A1EB9A30D00EA6047 /* GoogleMapsBase.framework */,
+				EEE02A261EB9A2EC00EA6047 /* GoogleMaps.framework */,
+				EEE02A271EB9A2EC00EA6047 /* GoogleMapsCore.framework */,
 				EE3C6C551EAF204C0007C327 /* Assets.xcassets */,
 				EE3C6C571EAF204C0007C327 /* LaunchScreen.storyboard */,
 				EE3C6C5A1EAF204C0007C327 /* Info.plist */,
@@ -158,6 +212,19 @@
 		EEE0EA171EB87B8A0088042D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EEE02A461EB9A49800EA6047 /* libz.tbd */,
+				EEE02A441EB9A48800EA6047 /* libicucore.tbd */,
+				EEE02A421EB9A47600EA6047 /* libc++.tbd */,
+				EEE02A401EB9A44B00EA6047 /* SystemConfiguration.framework */,
+				EEE02A3E1EB9A42600EA6047 /* QuartzCore.framework */,
+				EEE02A3C1EB9A40900EA6047 /* ImageIO.framework */,
+				EEE02A381EB9A3E700EA6047 /* GLKit.framework */,
+				EEE02A391EB9A3E700EA6047 /* OpenGLES.framework */,
+				EEE02A361EB9A3D400EA6047 /* CoreText.framework */,
+				EEE02A341EB9A3C100EA6047 /* CoreLocation.framework */,
+				EEE02A321EB9A3B800EA6047 /* CoreData.framework */,
+				EEE02A301EB9A3A800EA6047 /* AVFoundation.framework */,
+				EEE02A2E1EB9A3A100EA6047 /* Accelerate.framework */,
 				EEE0EA181EB87B8B0088042D /* libsqlite3.tbd */,
 			);
 			name = Frameworks;
@@ -275,6 +342,7 @@
 				EE3C6C561EAF204C0007C327 /* Assets.xcassets in Resources */,
 				EEE0EA221EB885E70088042D /* stations.json in Resources */,
 				EE3C6C541EAF204C0007C327 /* Main.storyboard in Resources */,
+				EEE02A2D1EB9A36500EA6047 /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,9 +530,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Track\\ My\\ MRT",
+					"$(PROJECT_DIR)/Track\\ My\\ MRT",
+					"$(PROJECT_DIR)/Track\\ My\\ MRT",
+				);
 				INFOPLIST_FILE = "Track My MRT/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "sg.edu.nus.iss.wlad.FT03.Track-My-MRT";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Track My MRT/Track My MRT-Bridging-Header.h";
@@ -478,9 +553,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Track\\ My\\ MRT",
+					"$(PROJECT_DIR)/Track\\ My\\ MRT",
+					"$(PROJECT_DIR)/Track\\ My\\ MRT",
+				);
 				INFOPLIST_FILE = "Track My MRT/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "sg.edu.nus.iss.wlad.FT03.Track-My-MRT";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Track My MRT/Track My MRT-Bridging-Header.h";
