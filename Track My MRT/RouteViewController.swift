@@ -24,38 +24,18 @@ class RouteViewController : UIViewController{
     
     @IBAction func share(_ sender: Any) {
         
-        socialShare(sharingText: "Text to share #Hashtag", sharingImage: UIImage(named: "image"), sharingURL: NSURL(string: "http://itunes.apple.com/app/"))
-
-   
-        
-        
-    
-}
-
-    
-    
-    func socialShare(sharingText: String?, sharingImage: UIImage?, sharingURL: NSURL?) {
-        var sharingItems = [AnyObject]()
-       
-       
-        
-        if let text = sharingText {
-            sharingItems.append(text as AnyObject)
-        }
-        if let image = sharingImage {
-            sharingItems.append(image)
-        }
-        if let url = sharingURL {
-            sharingItems.append(url)
-        }
         let bounds = UIScreen.main.bounds
         UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
-        let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
         self.view.drawHierarchy(in: bounds, afterScreenUpdates: false)
-       
-        activityViewController.excludedActivityTypes = [UIActivityType.airDrop,UIActivityType.copyToPasteboard,UIActivityType.addToReadingList,UIActivityType.assignToContact,UIActivityType.postToTencentWeibo,UIActivityType.postToVimeo,UIActivityType.print,UIActivityType.saveToCameraRoll,UIActivityType.postToWeibo]
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        let activityViewController = UIActivityViewController(activityItems: [img!], applicationActivities: nil)
         self.present(activityViewController, animated: true, completion: nil)
+        
+        
+    
     }
+    
     
     
    
