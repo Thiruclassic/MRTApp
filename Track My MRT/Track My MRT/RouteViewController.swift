@@ -27,18 +27,7 @@ class RouteViewController : UIViewController{
 
     @IBOutlet weak var toStationLabel: UILabel!
     
-
-
-    @IBAction func share(_ sender: Any) {
-        
-        
-        let bounds = UIScreen.main.bounds
-        UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
-        self.view.drawHierarchy(in: bounds, afterScreenUpdates: false)
-        let img = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        let activityViewController = UIActivityViewController(activityItems: [img!], applicationActivities: nil)
-        self.present(activityViewController, animated: true, completion: nil)
+    @IBAction func share(_ sender: UIButton) {
     }
     
     
@@ -49,6 +38,7 @@ class RouteViewController : UIViewController{
         fromStationLabel.text=fromStationText
         fromStationScrollLabel.text=fromStationText
         toStationLabel.text=toStationText
+        
        // readStationArrivalTime(stnCode: "asd")
     
     }
