@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -259,47 +259,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Efn-Op-Jzr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3912.8000000000002" y="-1154.5727136431785"/>
+            <point key="canvasLocation" x="2973.5999999999999" y="-1173.4632683658172"/>
         </scene>
         <!--View Map-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController storyboardIdentifier="MapScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8rJ-Kc-sve" customClass="MapViewController" customModule="Track_My_MRT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8rJ-Kc-sve" customClass="MapViewController" customModule="Track_My_MRT" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
+                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW" customClass="GMSMapView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qS5-ot-N0o">
-                                <rect key="frame" x="0.0" y="28" width="375" height="468"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvn-VE-F8j">
-                                <rect key="frame" x="60" y="517" width="254" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.093129582703113556" green="0.57018685340881348" blue="0.09977789968252182" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Send my Location">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendLocation:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Khh-bl-g35"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="View Map" image="map" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="View Map" image="googleMaps" id="cPa-gy-q4n"/>
                     <connections>
-                        <outlet property="mapView" destination="qS5-ot-N0o" id="MYa-Ac-ZBC"/>
+                        <outlet property="mapView" destination="QS5-Rx-YEW" id="uav-S1-sOV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1141.5999999999999" y="-548.27586206896558"/>
+            <point key="canvasLocation" x="1142" y="-528"/>
         </scene>
         <!--MRT Guide-->
         <scene sceneID="mCg-Op-7av">
@@ -331,10 +313,10 @@
             </objects>
             <point key="canvasLocation" x="1141.5999999999999" y="298.2008995502249"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Mrt Tab Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="MrtTabController" customModule="Track_My_MRT" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -343,8 +325,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="wMS-Nc-bkZ" kind="relationship" relationship="viewControllers" id="l8R-61-58U"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="Wty-JE-wgH" kind="relationship" relationship="viewControllers" id="f4O-eD-2vh"/>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -384,8 +366,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="googleMaps" width="25" height="25"/>
         <image name="home" width="25" height="25"/>
-        <image name="map" width="25" height="25"/>
         <image name="mrtGuide" width="768" height="535"/>
         <image name="share" width="25" height="25"/>
         <image name="train" width="24" height="24"/>

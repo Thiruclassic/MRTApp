@@ -7,59 +7,79 @@
 //
 
 import UIKit
-import MapKit
+import GoogleMaps
 import CoreLocation
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
 
-    @IBOutlet weak var mapView: MKMapView!
+   
+    @IBOutlet var mapView: GMSMapView!
     
-    var locationManager: CLLocationManager!
+    var locationManager = CLLocationManager()
+    
+    var selectedStations = RouteModel()
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager = CLLocationManager()
+        selectedStations = (tabBarController as! MrtTabController).selectedStations
+        // User Location
         locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
+        
     }
     
-    func locationManager(_ manager: CLLocationManager,
-                         didUpdateLocations locations: [CLLocation]) {
-        let userLocation = locations[0].coordinate
-        print("\(String(describing: userLocation.latitude)),\(String(describing: userLocation.longitude))")
-        annotateMap(userLocation)
+    override func viewWillAppear(_ animated: Bool) {
+        print("from: \(selectedStations.fromStation) :: to: \(selectedStations.toStation)")
+        locateStations(self.selectedStations.fromStation)
+        locateStations(self.selectedStations.toStation)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation = locations.last
+        
+        let camera = GMSCameraPosition.camera(withLatitude: userLocation!.coordinate.latitude, longitude: userLocation!.coordinate.longitude, zoom: 10.0)
+        let coordinates = CLLocationCoordinate2DMake(userLocation!.coordinate.latitude, userLocation!.coordinate.longitude)
+        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        mapView.settings.myLocationButton = true
+        mapView.isMyLocationEnabled = true
+        let marker = GMSMarker(position: coordinates)
+        marker.title = "I am here"
+        marker.map = self.mapView
+        self.view = mapView
+        
+        
+        
         locationManager.stopUpdatingLocation()
     }
     
-    func annotateMap (_ newCoordinate : CLLocationCoordinate2D) {
-        // set region on the map
-        let latDelta:CLLocationDegrees = 0.01
-        let longDelta:CLLocationDegrees = 0.01
-        let theSpan:MKCoordinateSpan = MKCoordinateSpanMake(latDelta,
-                                                            longDelta)
+    func locateStations(_ address: String) {
         
-        let myLocation:CLLocationCoordinate2D = newCoordinate
-        let theRegion:MKCoordinateRegion =
-            MKCoordinateRegionMake(myLocation, theSpan)
-        self.mapView.setRegion(theRegion, animated: true)
-        self.mapView.mapType = MKMapType.standard
-        
-        // add annotation
-        let myHomePin = MKPointAnnotation()
-        myHomePin.coordinate = newCoordinate
-        myHomePin.title = "I am here"
-        self.mapView.addAnnotation(myHomePin)
-    }
+        let geocoder = CLGeocoder()
+        let searchAddress = address + " MRT"
+        geocoder.geocodeAddressString(searchAddress, completionHandler:
+            {(placemarks, error) -> Void in
+                if let placemark = placemarks?[0] {
+                    let marker = GMSMarker(position: placemark.location!.coordinate)
+                    marker.title = address + " MRT"
+                    marker.map = self.mapView
+                }
+                else {
+                    print("Not found")
+                }
+        })
 
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func sendLocation(_ sender: UIButton) {
-    }
-
+    
 }
 
