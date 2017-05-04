@@ -279,7 +279,7 @@
         <!--MRT Guide-->
         <scene sceneID="mCg-Op-7av">
             <objects>
-                <viewController id="Wty-JE-wgH" sceneMemberID="viewController">
+                <viewController id="Wty-JE-wgH" customClass="MrtguideController" customModule="Track_My_MRT" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qL2-SG-c5v"/>
                         <viewControllerLayoutGuide type="bottom" id="K3Z-rT-gHP"/>
@@ -288,23 +288,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mrtGuide" translatesAutoresizingMaskIntoConstraints="NO" id="ICp-AX-Qzo">
-                                <rect key="frame" x="16" y="20" width="343" height="578"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6DS-6S-fON">
+                                <rect key="frame" x="-129" y="-151" width="556" height="870"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <gestureRecognizers/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mrtGuide" translatesAutoresizingMaskIntoConstraints="NO" id="vxJ-IM-1cq">
+                                        <rect key="frame" x="101" y="146" width="342" height="551"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                                        <gestureRecognizers/>
+                                    </imageView>
+                                </subviews>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="e8s-Gd-gmV" appends="YES" id="7Sh-mh-ziC"/>
+                                    <outlet property="delegate" destination="Wty-JE-wgH" id="Ipr-PD-Phs"/>
                                 </connections>
-                            </imageView>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="MRT Guide" image="train" id="lIw-KZ-2mZ" userLabel="third"/>
+                    <connections>
+                        <outlet property="img" destination="vxJ-IM-1cq" id="2cB-RL-tNV"/>
+                        <outlet property="scrollView" destination="6DS-6S-fON" id="eHk-mA-pEi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Sb-YQ-REm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <pinchGestureRecognizer id="e8s-Gd-gmV"/>
             </objects>
-            <point key="canvasLocation" x="1141.5999999999999" y="298.2008995502249"/>
+            <point key="canvasLocation" x="1141.875" y="380.28169014084506"/>
         </scene>
         <!--Mrt Tab Controller-->
         <scene sceneID="yl2-sM-qoP">
