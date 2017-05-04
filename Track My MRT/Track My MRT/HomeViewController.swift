@@ -33,7 +33,7 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
         stations=readAllStations()
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
-        
+        selectedStations = (tabBarController as! MrtTabController).selectedStations
         createTables()
     }
     

@@ -17,10 +17,14 @@ let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
 
 func createTables()
 {
+    if(openDatabase())
+    {
+   // dropTables()
     createStationTable()
     createDistanceTable()
+    }
     
-    //dropTables()
+   
 }
 
 func openDatabase() -> Bool
@@ -40,8 +44,7 @@ func openDatabase() -> Bool
 
 func executeSql(sql:String,tableName:String) -> Bool
 {
-    if(openDatabase())
-    {
+    
         if(sqlite3_exec(mrtDb, sql, nil,nil,nil) != SQLITE_OK)
         {
             print("Failed to create table \(tableName)")
@@ -54,7 +57,7 @@ func executeSql(sql:String,tableName:String) -> Bool
         {
             print("table \(tableName) created successfully")
         }
-    }
+
     return true
 }
 
