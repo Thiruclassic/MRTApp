@@ -34,15 +34,25 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
         fromStationName.inputView = UIView()
         toStationName.inputView = UIView()
         
-       
+        addBackGroundImage()
         //self.view.tra
         
         stations=readAllStations()
+        
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
         selectedStations = (tabBarController as! MrtTabController).selectedStations
         createTables()
     }
+    
+   /* DispatchQueue.global(qos: .background)
+    {
+    print("background thread")
+    DispatchQueue.main.async {
+    print("background thread inside")
+    
+    }
+    }*/
     
     func addBackGroundImage()
     {
