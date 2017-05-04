@@ -33,8 +33,8 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
         stations=readAllStations()
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
-        
-        createTables()
+        selectedStations = (tabBarController as! MrtTabController).selectedStations
+       // createStationTable()
     }
     
     @IBAction func showRoute(_ sender: UIButton) {
