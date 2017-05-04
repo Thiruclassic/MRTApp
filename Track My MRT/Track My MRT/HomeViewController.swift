@@ -30,11 +30,30 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
         fromDropDown.delegate=self
         toDropDown.dataSource=self
         toDropDown.delegate=self
+        
+        fromStationName.inputView = UIView()
+        toStationName.inputView = UIView()
+        
+       
+        //self.view.tra
+        
         stations=readAllStations()
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
         selectedStations = (tabBarController as! MrtTabController).selectedStations
         createTables()
+    }
+    
+    func addBackGroundImage()
+    {
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "mrt.jpg")?.draw(in: self.view.bounds)
+        
+        let image: UIImage! = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        self.view.backgroundColor = UIColor(patternImage: image)
     }
     
     @IBAction func showRoute(_ sender: UIButton) {

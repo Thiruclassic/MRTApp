@@ -13,6 +13,10 @@ class RouteViewController : UIViewController{
     
     var stationData:StationData!
     
+    @IBOutlet weak var activityIndicatorArrival: UIActivityIndicatorView!
+    
+    @IBOutlet weak var activityIndicatornxtArrival: UIActivityIndicatorView!
+    
     @IBOutlet weak var fromStationLabel: UILabel!
     
     @IBOutlet weak var fromStationScrollLabel: UILabel!
@@ -125,6 +129,8 @@ class RouteViewController : UIViewController{
                 print(arrivalTimes[1])
                 
                 DispatchQueue.main.async {
+                    self.activityIndicatorArrival.stopAnimating()
+                    self.activityIndicatornxtArrival.stopAnimating()
                     self.arrivalTimeLabel.text=arrivalTimes[0]
                     self.nextArrivalTimeLabel.text=arrivalTimes[1]
                 }
