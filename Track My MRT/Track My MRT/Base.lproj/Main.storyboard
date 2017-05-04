@@ -18,11 +18,11 @@
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="To" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Glo-8c-WeD">
-                                <rect key="frame" x="16" y="289" width="60" height="31"/>
+                                <rect key="frame" x="13" y="262" width="60" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -36,7 +36,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uok-bH-gmL">
-                                <rect key="frame" x="105" y="86" width="219" height="30"/>
+                                <rect key="frame" x="79" y="81" width="219" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -47,7 +47,7 @@
                                 </connections>
                             </textField>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="FromStationTable" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FkT-MP-8Ly">
-                                <rect key="frame" x="104" y="124" width="240" height="128"/>
+                                <rect key="frame" x="64" y="102" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -79,7 +79,7 @@
                                 </prototypes>
                             </tableView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rg7-Dc-UiC">
-                                <rect key="frame" x="105" y="294" width="219" height="30"/>
+                                <rect key="frame" x="69" y="255" width="219" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -89,7 +89,7 @@
                                 </connections>
                             </textField>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="ToStationTable" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DuQ-RU-h3S">
-                                <rect key="frame" x="104" y="332" width="240" height="128"/>
+                                <rect key="frame" x="64" y="293" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -151,7 +151,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2973.5999999999999" y="-1901.1994002998501"/>
+            <point key="canvasLocation" x="2971.875" y="-1901.4084507042253"/>
         </scene>
         <!--Search Result-->
         <scene sceneID="aAc-s2-vc1">
@@ -162,7 +162,7 @@
                         <viewControllerLayoutGuide type="bottom" id="93C-vo-Qkn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TK5-2y-SgS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Clementi " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QzX-hb-sVf">
@@ -215,7 +215,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2PL-xu-E7t">
-                                <rect key="frame" x="0.0" y="234" width="375" height="433"/>
+                                <rect key="frame" x="0.0" y="234" width="375" height="295"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="train" translatesAutoresizingMaskIntoConstraints="NO" id="WDK-JR-ikk">
@@ -253,7 +253,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Search Result" id="dgI-GZ-tDb"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Search Result" id="dgI-GZ-tDb">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="pgg-ta-PMI">
+                            <connections>
+                                <action selector="share:" destination="zBM-mu-bKt" id="ZUC-Je-Qka"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="arrivalTimeLabel" destination="DFx-Sb-yMS" id="gRJ-1I-Gp5"/>
                         <outlet property="fareLabel" destination="bZb-FB-btY" id="FV9-uK-YQ7"/>
@@ -265,7 +273,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Efn-Op-Jzr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2973.5999999999999" y="-1173.4632683658172"/>
+            <point key="canvasLocation" x="2971.875" y="-1125"/>
         </scene>
         <!--View Map-->
         <scene sceneID="wg7-f3-ORb">
@@ -276,7 +284,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW" customClass="GMSMapView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -298,7 +306,7 @@
                         <viewControllerLayoutGuide type="bottom" id="K3Z-rT-gHP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ue1-1j-Q1d">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mrtGuide" translatesAutoresizingMaskIntoConstraints="NO" id="ICp-AX-Qzo">
@@ -375,7 +383,6 @@
         <image name="googleMaps" width="25" height="25"/>
         <image name="home" width="25" height="25"/>
         <image name="mrtGuide" width="768" height="535"/>
-        <image name="share" width="25" height="25"/>
         <image name="train" width="24" height="24"/>
     </resources>
 </document>

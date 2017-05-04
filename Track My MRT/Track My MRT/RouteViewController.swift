@@ -26,9 +26,20 @@ class RouteViewController : UIViewController{
 
     @IBOutlet weak var toStationLabel: UILabel!
     
-    @IBAction func share(_ sender: UIButton) {
+   
+    @IBAction func share(_ sender: Any) {
+        let bounds = UIScreen.main.bounds
+        UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
+        self.view.drawHierarchy(in: bounds, afterScreenUpdates: false)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        let activityViewController = UIActivityViewController(activityItems: [img!], applicationActivities: nil)
+        self.present(activityViewController, animated: true, completion: nil)
+        
+        
+        
     }
-    
+
     
     
     override func viewDidLoad() {
