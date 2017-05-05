@@ -1,0 +1,12 @@
+{
+    "stationlane":[
+    
+                   {"id ":"1","linecode":"EW","total number of stations":"29","total distance":"45","color":"Green"    },
+                   {"id ":"2","linecode":"NS","total number of stations":"26","total distance":"44","color":"Red"      },
+                   {"id ":"3","linecode":"NE","total number of stations":"16","total distance":"20","color":"Purple"   },
+                   {"id ":"4","linecode":"CC","total number of stations":"30","total distance":"35.5","color":"Yellow" },
+                   {"id ":"5","linecode":"DT","total number of stations":"18","total distance":"20.9","color":"Blue"   },
+                   {"id ":"6","linecode":"CG","total number of stations":"2","total distance":"5","color":"Green"      },
+                   { "id ":"7","linecode":"CE","total number of stations":"2","total distance":"5","color":"Yellow"    }
+               ]
+}
