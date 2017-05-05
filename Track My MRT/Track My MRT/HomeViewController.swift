@@ -136,7 +136,7 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
         }
         
         
-        var color = UIColor.green
+        let color = UIColor.white
         cell?.backgroundColor = color
 
         //print(tableView.restorationIdentifier!)
