@@ -18,6 +18,8 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
     
     @IBOutlet weak var toStationName:UITextField!
     
+    let backgroundQueue = DispatchQueue.global(qos: .background)
+    
     
     var stations:Array = [""]
     
@@ -34,25 +36,23 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
         fromStationName.inputView = UIView()
         toStationName.inputView = UIView()
         
-        addBackGroundImage()
-        //self.view.tra
         
-        stations=readAllStations()
-        
+    
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
         selectedStations = (tabBarController as! MrtTabController).selectedStations
-        createTables()
+        
+        backgroundQueue.async {
+            self.stations=readAllStations()
+            createTables()
+            self.addBackGroundImage()
+        }
+        
     }
     
-   /* DispatchQueue.global(qos: .background)
-    {
-    print("background thread")
-    DispatchQueue.main.async {
-    print("background thread inside")
     
-    }
-    }*/
+
+   
     
     func addBackGroundImage()
     {
@@ -135,7 +135,9 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
         cell=self.toDropDown.dequeueReusableCell(withIdentifier: TO_TABLE_CELL_ID) as! CustomStationCell
         }
         
-        cell?.backgroundColor=UIColor.green
+        
+        var color = UIColor.green
+        cell?.backgroundColor = color
 
         //print(tableView.restorationIdentifier!)
        
