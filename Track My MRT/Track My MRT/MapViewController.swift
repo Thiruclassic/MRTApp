@@ -9,8 +9,9 @@
 import UIKit
 import GoogleMaps
 import CoreLocation
+import MessageUI
 
-class MapViewController: UIViewController, CLLocationManagerDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate,MFMessageComposeViewControllerDelegate {
 
    
 
@@ -23,7 +24,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     var selectedStations = RouteModel()
     
-    
+    var latitude = -1.0
+    var longitude = -1.0
     
     
     override func viewDidLoad() {
@@ -45,7 +47,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation = locations.last
-        
+        self.latitude = userLocation!.coordinate.latitude
+        self.longitude = userLocation!.coordinate.longitude
         let camera = GMSCameraPosition.camera(withLatitude: userLocation!.coordinate.latitude, longitude: userLocation!.coordinate.longitude, zoom: 10.0)
         let coordinates = CLLocationCoordinate2DMake(userLocation!.coordinate.latitude, userLocation!.coordinate.longitude)
         mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height - 120), camera: camera)
@@ -67,7 +70,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     func locateStations(_ address: String) {
         
         let geocoder = CLGeocoder()
-        let searchAddress = address + " MRT"
+        let searchAddress = address
         geocoder.geocodeAddressString(searchAddress, completionHandler:
             {(placemarks, error) -> Void in
                 if let placemark = placemarks?[0] {
@@ -82,6 +85,24 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 
     }
     
+    @IBAction func sendLocation() {
+        let message = "http://maps.google.com/maps?f=q&q=\(self.latitude),\(self.longitude)"
+        if (MFMessageComposeViewController.canSendText()) {
+            let controller = MFMessageComposeViewController()
+            controller.body = message
+            controller.recipients = []
+            controller.messageComposeDelegate = self
+            self.present(controller, animated: true, completion: nil)
+        } else {
+            print("Simulators")
+            print("message::\(message)")
+        }
+
+    }
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
