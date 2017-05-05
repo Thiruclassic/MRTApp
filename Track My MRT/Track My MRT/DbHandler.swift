@@ -245,18 +245,18 @@ func createDistanceFareData()
     
     prepareDistanceStatment()
     
-    let checkpoints:[NSDictionary] = readJSONData(fileName: CHECKPOINT_JSON_FILE, fileType: JSON_TYPE, rootElement: CHECKPOINT_ROOT_ELEMENT)
+    let distances:[NSDictionary] = readJSONData(fileName: DISTANCE_FARE_JSON_FILE, fileType: JSON_TYPE, rootElement: DISTANCE_ROOT_ELEMENT)
     
     var count:Int = 0
-    for checkpoint in checkpoints
+    for distance in distances
     {
-        let checkpointName=checkpoint[CHECKPOINT_NAME] as? NSString
-        let checkpointLineId=checkpoint[CHECKPOINT_STATION_LINE_ID] as? NSString
-        let checkpointStationId=checkpoint[CHECKPOINT_STATION_ID] as? NSString
+        let min_distance=distance[DISTANCE_MINIMUM] as? NSString
+        let max_distance=distance[DISTANCE_MAXIMUM] as? NSString
+        let adult_fare=distance[ADULT_FARE] as? NSString
     
-        sqlite3_bind_text(insertStatement, 1, checkpointName!.utf8String, -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(insertStatement, 2, checkpointLineId!.utf8String , -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(insertStatement, 3, checkpointStationId!.utf8String , -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(insertStatement, 1, min_distance!.utf8String, -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(insertStatement, 2, max_distance!.utf8String , -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(insertStatement, 3, adult_fare!.utf8String , -1, SQLITE_TRANSIENT);
        
         count=count+1
         let returnCode=sqlite3_step(insertStatement)
