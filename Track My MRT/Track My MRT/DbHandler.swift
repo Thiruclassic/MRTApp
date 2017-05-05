@@ -19,9 +19,11 @@ func createTables()
 {
     if(openDatabase())
     {
-   // dropTables()
+    //dropTables()
     createStationTable()
     createDistanceTable()
+    //createStationLaneTable()
+    //createCheckpointTable()
     }
     
    
@@ -81,6 +83,21 @@ func createStationTable()
     
 }
 
+func createStationLaneTable()
+{
+    if(executeSql(sql: STATIONLANE_CREATE_QUERY, tableName: STATIONLANE_TABLE))
+    {
+        createStationData()
+    }
+}
+func createCheckpointTable()
+{
+    if(executeSql(sql: CHECKPOINT_CREATE_QUERY, tableName: CHECKPOINT_TABLE))
+    {
+        createStationData()
+    }
+}
+
 func dropTables()
 {
     var sql="DROP TABLE MRTSTATION"
@@ -91,40 +108,15 @@ func dropTables()
     
     executeSql(sql: sql, tableName: DISTANCE_TABLE)
     
+    sql="DROP TABLE STATIONLANE"
+    
+    executeSql(sql: sql, tableName: STATIONLANE_TABLE)
+    
+    sql="DROP TABLE CHECKPOINT"
+    
+    executeSql(sql: sql, tableName: CHECKPOINT_TABLE)
+    
 }
-
-
-/*func prepareDistanceStatment()
-{
-    var sqlString : String
-    
-    sqlString="INSERT INTO DISTANCE (MIN_DISTANCE, MAX_DISTANCE, ADULT_FARE) VALUES (?, ?, ?)"
-    
-    var cSql = sqlString.cString(using: String.Encoding.utf8)
-    
-    sqlite3_prepare_v2(mrtDb, cSql, -1, &insertStatement, nil)
-    
-    sqlString = "SELECT ADULT_FARE FROM DISTANCE WHERE id=?"
-    cSql = sqlString.cString(using: String.Encoding.utf8)
-    sqlite3_prepare_v2(mrtDb, cSql!, -1, &selectStatement,nil)
-    
-   }
-
-func prepareMrtStationStatement()
-{
-    var sqlString : String
-    sqlString="INSERT INTO MRTSTATION (NAME, CODE, DISTANCE) VALUES (?, ?, ?)"
-    
-    var cSql = sqlString.cString(using: String.Encoding.utf8)
-    
-    sqlite3_prepare_v2(mrtDb, cSql, -1, &insertStatement, nil)
-    
-    sqlString = "SELECT CODE,DISTANCE,NAME,ID FROM MRTSTATION WHERE NAME in (?,?)"
-    cSql = sqlString.cString(using: String.Encoding.utf8)
-    sqlite3_prepare_v2(mrtDb, cSql!, -1, &selectStatement,nil)
-    
-}*/
-
 
 func prepareMrtStationStatement()
 {
@@ -148,25 +140,123 @@ func prepareDistanceStatment()
     sqlite3_prepare_v2(mrtDb, cSql, -1, &selectStatement, nil)
 }
 
+func prepareStationLaneStatement()
+{
+    var cSql = STATIONLANE_INSERT_QUERY.cString(using: String.Encoding.utf8)
+    sqlite3_prepare_v2(mrtDb, cSql, -1, &insertStatement, nil)
+    
+    cSql = STATIONLANE_SELECT_QUERY.cString(using: String.Encoding.utf8)
+    sqlite3_prepare_v2(mrtDb, cSql, -1, &selectStatement, nil)
+}
 
+func prepareCheckpointStatement()
+{
+    var cSql = CHECKPOINT_INSERT_QUERY.cString(using: String.Encoding.utf8)
+    sqlite3_prepare_v2(mrtDb, cSql, -1, &insertStatement, nil)
+    
+    cSql = CHECKPOINT_SELECT_QUERY.cString(using: String.Encoding.utf8)
+    sqlite3_prepare_v2(mrtDb, cSql, -1, &selectStatement, nil)
+}
+
+
+
+func createStationLaneData()
+{
+    prepareStationLaneStatement()
+    
+    let lanes:[NSDictionary] = readJSONData(fileName: STATION_LANE_JSON_FILE, fileType: JSON_TYPE, rootElement: STATION_LANE_ROOT_ELEMENT)
+    
+    var count:Int = 0
+    for lane in lanes
+    {
+        let lineCode=lane[STATION_LINE_CODE] as? NSString
+        let totalStations=lane[STATION_LANE_TOTAL_STATIONS] as? NSString
+        let totalDistance=lane[STATION_LANE_TOTAL_DISTANCE] as? NSString
+        let laneColor=lane[STATION_LANE_COLOR] as? NSString
+        
+        sqlite3_bind_text(insertStatement, 1, lineCode!.utf8String, -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(insertStatement, 2, totalStations!.utf8String , -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(insertStatement, 3, totalDistance!.utf8String , -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(insertStatement, 4, laneColor!.utf8String , -1, SQLITE_TRANSIENT);
+        
+        count=count+1
+        let returnCode=sqlite3_step(insertStatement)
+        if (returnCode != SQLITE_DONE)
+        {
+            print(INSERTION_ERROR, count)
+            print(ERROR_CODE, sqlite3_errcode (mrtDb));
+            let error = String(cString: sqlite3_errmsg(mrtDb));
+            print(ERROR_MESSAGE, error);
+            print(RETURN_CODE, returnCode)
+        }
+        
+        
+        sqlite3_reset(insertStatement);
+        sqlite3_clear_bindings(insertStatement);
+    }
+    
+    print("Station Lane Data inserted successfully")
+    
+    
+}
+
+func createCheckpointData()
+{
+    prepareCheckpointStatement()
+    
+    let lanes:[NSDictionary] = readJSONData(fileName: STATION_LANE_JSON_FILE, fileType: JSON_TYPE, rootElement: STATION_LANE_ROOT_ELEMENT)
+    
+    var count:Int = 0
+    for lane in lanes
+    {
+        let lineCode=lane[STATION_LINE_CODE] as? NSString
+        let totalStations=lane[STATION_LANE_TOTAL_STATIONS] as? NSString
+        let totalDistance=lane[STATION_LANE_TOTAL_DISTANCE] as? NSString
+        let laneColor=lane[STATION_LANE_COLOR] as? NSString
+        
+        sqlite3_bind_text(insertStatement, 1, lineCode!.utf8String, -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(insertStatement, 2, totalStations!.utf8String , -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(insertStatement, 3, totalDistance!.utf8String , -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(insertStatement, 4, laneColor!.utf8String , -1, SQLITE_TRANSIENT);
+        
+        count=count+1
+        let returnCode=sqlite3_step(insertStatement)
+        if (returnCode != SQLITE_DONE)
+        {
+            print(INSERTION_ERROR, count)
+            print(ERROR_CODE, sqlite3_errcode (mrtDb));
+            let error = String(cString: sqlite3_errmsg(mrtDb));
+            print(ERROR_MESSAGE, error);
+            print(RETURN_CODE, returnCode)
+        }
+        
+        
+        sqlite3_reset(insertStatement);
+        sqlite3_clear_bindings(insertStatement);
+    }
+    
+    print("Station Lane Data inserted successfully")
+
+    
+}
 
 func createDistanceFareData()
 {
     
     prepareDistanceStatment()
     
-    let distances:[NSDictionary] = readJSONData(fileName: DISTANCE_FARE_JSON_FILE, fileType: JSON_TYPE, rootElement: DISTANCE_ROOT_ELEMENT)
+    let checkpoints:[NSDictionary] = readJSONData(fileName: CHECKPOINT_JSON_FILE, fileType: JSON_TYPE, rootElement: CHECKPOINT_ROOT_ELEMENT)
     
     var count:Int = 0
-    for distance in distances
+    for checkpoint in checkpoints
     {
-        let minimumDistance=distance[DISTANCE_MINIMUM] as? NSString
-        let maximumDistance=distance[DISTANCE_MAXIMUM] as? NSString
-        let adultFare=distance[ADULT_FARE] as? NSString
+        let checkpointName=checkpoint[CHECKPOINT_NAME] as? NSString
+        let checkpointLineId=checkpoint[CHECKPOINT_STATION_LINE_ID] as? NSString
+        let checkpointStationId=checkpoint[CHECKPOINT_STATION_ID] as? NSString
     
-        sqlite3_bind_text(insertStatement, 1, minimumDistance!.utf8String, -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(insertStatement, 2, maximumDistance!.utf8String , -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(insertStatement, 3, adultFare!.utf8String , -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(insertStatement, 1, checkpointName!.utf8String, -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(insertStatement, 2, checkpointLineId!.utf8String , -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(insertStatement, 3, checkpointStationId!.utf8String , -1, SQLITE_TRANSIENT);
        
         count=count+1
         let returnCode=sqlite3_step(insertStatement)
@@ -184,7 +274,7 @@ func createDistanceFareData()
     sqlite3_clear_bindings(insertStatement);
     }
     
-    print("Distance Data inserted successfully")
+    print("Checkpoint Data inserted successfully")
 
 
 }
