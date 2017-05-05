@@ -204,15 +204,15 @@ func createCheckpointData()
 {
     prepareCheckpointStatement()
     
-    let lanes:[NSDictionary] = readJSONData(fileName: STATION_LANE_JSON_FILE, fileType: JSON_TYPE, rootElement: STATION_LANE_ROOT_ELEMENT)
+    let checkpoints:[NSDictionary] = readJSONData(fileName: CHECKPOINT_JSON_FILE, fileType: JSON_TYPE, rootElement: CHECKPOINT_ROOT_ELEMENT)
     
     var count:Int = 0
-    for lane in lanes
+    for checkpoint in checkpoints
     {
-        let lineCode=lane[STATION_LINE_CODE] as? NSString
-        let totalStations=lane[STATION_LANE_TOTAL_STATIONS] as? NSString
-        let totalDistance=lane[STATION_LANE_TOTAL_DISTANCE] as? NSString
-        let laneColor=lane[STATION_LANE_COLOR] as? NSString
+        let lineCode=checkpoint[STATION_LINE_CODE] as? NSString
+        let totalStations=checkpoint[STATION_LANE_TOTAL_STATIONS] as? NSString
+        let totalDistance=checkpoint[STATION_LANE_TOTAL_DISTANCE] as? NSString
+        let laneColor=checkpoint[STATION_LANE_COLOR] as? NSString
         
         sqlite3_bind_text(insertStatement, 1, lineCode!.utf8String, -1, SQLITE_TRANSIENT);
         sqlite3_bind_text(insertStatement, 2, totalStations!.utf8String , -1, SQLITE_TRANSIENT);
