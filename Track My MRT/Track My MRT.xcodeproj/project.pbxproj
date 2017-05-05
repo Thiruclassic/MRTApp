@@ -11,6 +11,8 @@
 		CFAC350D1EBB2033004EB401 /* mrt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CFAC350C1EBB2033004EB401 /* mrt.jpg */; };
 		CFAC350F1EBB225F004EB401 /* direction.icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CFAC350E1EBB225F004EB401 /* direction.icon.png */; };
 		CFAC35111EBB24D2004EB401 /* directions2.png in Resources */ = {isa = PBXBuildFile; fileRef = CFAC35101EBB24D2004EB401 /* directions2.png */; };
+		CFAC35131EBC68C9004EB401 /* stationlane.json in Resources */ = {isa = PBXBuildFile; fileRef = CFAC35121EBC68C9004EB401 /* stationlane.json */; };
+		CFAC35151EBC693D004EB401 /* checkpoints.json in Resources */ = {isa = PBXBuildFile; fileRef = CFAC35141EBC693D004EB401 /* checkpoints.json */; };
 		EE329F321EB9A8F600044533 /* StationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE329F311EB9A8F600044533 /* StationData.swift */; };
 		EE3724351EB6D9BF00BE65FA /* StationDataExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3724341EB6D9BF00BE65FA /* StationDataExtractor.swift */; };
 		EE3C6C4D1EAF204C0007C327 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3C6C4C1EAF204C0007C327 /* AppDelegate.swift */; };
@@ -72,6 +74,8 @@
 		CFAC350C1EBB2033004EB401 /* mrt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mrt.jpg; sourceTree = "<group>"; };
 		CFAC350E1EBB225F004EB401 /* direction.icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = direction.icon.png; path = ../../../direction.icon.png; sourceTree = "<group>"; };
 		CFAC35101EBB24D2004EB401 /* directions2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = directions2.png; path = ../../../directions2.png; sourceTree = "<group>"; };
+		CFAC35121EBC68C9004EB401 /* stationlane.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stationlane.json; sourceTree = "<group>"; };
+		CFAC35141EBC693D004EB401 /* checkpoints.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = checkpoints.json; sourceTree = "<group>"; };
 		EE329F311EB9A8F600044533 /* StationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationData.swift; sourceTree = "<group>"; };
 		EE3724341EB6D9BF00BE65FA /* StationDataExtractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationDataExtractor.swift; sourceTree = "<group>"; };
 		EE3C6C491EAF204C0007C327 /* Track My MRT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Track My MRT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -211,6 +215,8 @@
 				EEE0EA1D1EB87C630088042D /* DbHandler.swift */,
 				EE329F311EB9A8F600044533 /* StationData.swift */,
 				EEE02A481EB9D37200EA6047 /* RouteModel.swift */,
+				CFAC35121EBC68C9004EB401 /* stationlane.json */,
+				CFAC35141EBC693D004EB401 /* checkpoints.json */,
 			);
 			path = "Track My MRT";
 			sourceTree = "<group>";
@@ -363,7 +369,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFAC35131EBC68C9004EB401 /* stationlane.json in Resources */,
 				CFAC35111EBB24D2004EB401 /* directions2.png in Resources */,
+				CFAC35151EBC693D004EB401 /* checkpoints.json in Resources */,
 				EE3C6C591EAF204C0007C327 /* LaunchScreen.storyboard in Resources */,
 				EE3C6C561EAF204C0007C327 /* Assets.xcassets in Resources */,
 				EEE0EA221EB885E70088042D /* stations.json in Resources */,
