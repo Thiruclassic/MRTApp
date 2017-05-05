@@ -300,10 +300,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3VK-fr-Xn8" customClass="GMSMapView" customModule="Track_My_MRT" customModuleProvider="target">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3VK-fr-Xn8" customClass="GMSMapView" customModule="Track_My_MRT" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="362"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="362" id="RhN-hY-soU"/>
+                                </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Yq-0q-168">
                                 <rect key="frame" x="137" y="455" width="46" height="30"/>
@@ -335,11 +337,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6DS-6S-fON">
-                                <rect key="frame" x="-246" y="-207" width="673" height="926"/>
+                                <rect key="frame" x="-48" y="-26" width="382" height="745"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mrtGuide" translatesAutoresizingMaskIntoConstraints="NO" id="vxJ-IM-1cq">
-                                        <rect key="frame" x="289" y="317" width="250" height="326"/>
+                                        <rect key="frame" x="128" y="206" width="149" height="120"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                         <gestureRecognizers/>
                                     </imageView>
