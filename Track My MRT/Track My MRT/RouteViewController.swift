@@ -52,7 +52,7 @@ class RouteViewController : UIViewController{
         fromStationLabel.text=stationData.fromStation
         fromStationScrollLabel.text=stationData.fromStation
         toStationLabel.text=stationData.toStation
-        fareLabel.text=stationData.fare!
+        fareLabel.text=stationData.fare
         
         arrivalTimeLabel.text = stationData.arrivalTime
         nextArrivalTimeLabel.text = stationData.nxtTrainArrivalTime
@@ -61,8 +61,11 @@ class RouteViewController : UIViewController{
     
     }
     
-    func readStationArrivalTime(stnCode:String,stnDirectionId:Int)
+    func readStationArrivalTime(stnCode:String?,stnDirectionId:Int)
     {
+        
+        if(stnCode != nil)
+        {
         let endpoint: String = MRT_ARRTIVAL_URL
         guard let mrtURL = URL(string: endpoint) else {
             print("Error: cannot create URL")
@@ -74,7 +77,7 @@ class RouteViewController : UIViewController{
         
         
         let postString : String?
-        postString=POST_KEY + stnCode
+        postString=POST_KEY + stnCode!
         
         mrtUrlRequest.httpBody=postString!.data(using: String.Encoding.utf8)
         
@@ -110,7 +113,7 @@ class RouteViewController : UIViewController{
                 }
                 //print("Train Arrival Data: " + receivedMRTData.description)
                 
-                guard let stnData = receivedMRTData[stnCode] as? AnyObject,let platformData=stnData[PLATFORM+String(stnDirectionId)] as? AnyObject, let nxtTrain=platformData[NXT_TRAIN] as? String,let subTrain=platformData[SUB_TRAIN] as? String,let time=receivedMRTData[TIME] as? String
+                guard let stnData = receivedMRTData[stnCode!] as? AnyObject,let platformData=stnData[PLATFORM+String(describing: stnDirectionId)] as? AnyObject, let nxtTrain=platformData[NXT_TRAIN] as? String,let subTrain=platformData[SUB_TRAIN] as? String,let time=receivedMRTData[TIME] as? String
                     else {
                         print("Could not get MRTData from JSON")
                         return
@@ -147,6 +150,7 @@ class RouteViewController : UIViewController{
         }
         task.resume()
         
+    }
     }
     
     

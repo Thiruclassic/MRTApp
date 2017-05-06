@@ -45,6 +45,7 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
         backgroundQueue.async {
             self.stations=readAllStations()
             createTables()
+            //dropTables()
             self.addBackGroundImage()
         }
         
