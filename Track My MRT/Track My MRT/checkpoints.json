@@ -1,50 +1,45 @@
 {
     "checkpoints":[
                    
-                   "Check Point Name":"Jurong East","Check Point ID ":"1","Station Line Id":"1","Station Number":"EW24"
-                   "Check Point Name":"Buona Vista","Check Point ID ":"2","Station Line Id":"1","Station Number":"EW21"
-                   "Check Point Name":"Outram Park","Check Point ID ":"3","Station Line Id":"1","Station Number":"EW16"
-                   "Check Point Name":"Bugis","Check Point ID ":"4","Station Line Id":"1","Station Number":"EW12"
-                   "Check Point Name":"Paya Lebar","Check Point ID ":"5","Station Line Id":"1","Station Number":"EW8"
-                   "Check Point Name":"Tanah Merah","Check Point ID ":"6","Station Line Id":"1","Station Number":"EW4"
-                   
-                   
-                   "Check Point Name":"Jurong East","Check Point ID ":"1","Station Line Id":"2","Station Number":"NS1"
-                   "Check Point Name":"Bishan","Check Point ID ":"2","Station Line Id":"2","Station Number":"NS17"
-                   "Check Point Name":"Newton","Check Point ID ":"3","Station Line Id":"2","Station Number":"NS21"
-                   "Check Point Name":"Dhoby Ghaut","Check Point ID ":"4","Station Line Id":"2","Station Number":"NS24"
-                   "Check Point Name":"Marina Bay","Check Point ID ":"5","Station Line Id":"2","Station Number":"NS27"
-                   
-                   
-                   "Check Point Name":"Habour Front","Check Point ID ":"1","Station Line Id":"3","Station Number":"NE1"
-                   "Check Point Name":"Outram Park","Check Point ID ":"2","Station Line Id":"3","Station Number":"NE3"
-                   "Check Point Name":"China Town","Check Point ID ":"3","Station Line Id":"3","Station Number":"NE4"
-                   "Check Point Name":"Dhoby Ghaut","Check Point ID ":"4","Station Line Id":"3","Station Number":"NE6"
-                   "Check Point Name":"Little India","Check Point ID ":"5","Station Line Id":"3","Station Number":"NE7"
-                   "Check Point Name":"Serangoon","Check Point ID ":"6","Station Line Id":"3","Station Number":"NE12"
-                   
-                   
-                   "Check Point Name":"Harbour Front","Check Point ID ":"1","Station Line Id":"4","Station Number":"CC29"
-                   "Check Point Name":"Buona Vista","Check Point ID ":"2","Station Line Id":"4","Station Number":"CC22"
-                   "Check Point Name":"Botanic Garden","Check Point ID ":"3","Station Line Id":"4","Station Number":"CC19"
-                   "Check Point Name":"Bishan","Check Point ID ":"4","Station Line Id":"4","Station Number":"CC15"
-                   "Check Point Name":"Serangoon","Check Point ID ":"5","Station Line Id":"4","Station Number":"CC13"
-                   "Check Point Name":"Paya Lebar","Check Point ID ":"6","Station Line Id":"4","Station Number":"CC9"
-                   "Check Point Name":"Promenade","Check Point ID ":"7","Station Line Id":"4","Station Number":"CC4"
-                   "Check Point Name":"Dhoby Ghaut","Check Point ID ":"8","Station Line Id":"4","Station Number":"CC1"
-                   
-                   
-                   "Check Point Name":"Botanic Garden","Check Point ID ":"1","Station Line Id":"5","Station Number":"DT9"
-                   "Check Point Name":"Newton","Check Point ID ":"2","Station Line Id":"5","Station Number":"DT11"
-                   "Check Point Name":"Little India","Check Point ID ":"3","Station Line Id":"5","Station Number":"DT12"
-                   "Check Point Name":"Bugis","Check Point ID ":"4","Station Line Id":"5","Station Number":"DT14"
-                   "Check Point Name":"Promenade","Check Point ID ":"5","Station Line Id":"5","Station Number":"DT15"
-                   "Check Point Name":"Bayfront","Check Point ID ":"6","Station Line Id":"5","Station Number":"DT16"
-                   "Check Point Name":"Chinatown","Check Point ID ":"7","Station Line Id":"5","Station Number":"DT19"
-                   
-                   
-                   "Check Point Name":"BayFront","Check Point ID ":"10","Station Line Id":"4","Station Number":"CE1"
-                   "Check Point Name":"Marina Bay","Check Point ID ":"11","Station Line Id":"4","Station Number":"CE2"
+                   {"Check Point Name":"Jurong East","Check Point ID ":"1","Station Line Id":"EW","Station Number":"EW24"		},
+                   {"Check Point Name":"Buona Vista","Check Point ID ":"2","Station Line Id":"EW","Station Number":"EW21"		},
+                   {"Check Point Name":"Outram Park","Check Point ID ":"3","Station Line Id":"EW","Station Number":"EW16"		},
+                   {"Check Point Name":"Bugis","Check Point ID ":"4","Station Line Id":"EW","Station Number":"EW12"			},
+                   {"Check Point Name":"Paya Lebar","Check Point ID ":"5","Station Line Id":"EW","Station Number":"EW8"		},
+                   {"Check Point Name":"Tanah Merah","Check Point ID ":"6","Station Line Id":"EW","Station Number":"EW4"		},
+                   {"Check Point Name":"North South Line","Check Point ID ":"","Station Line Id":"","Station Number":""		},
+                   {"Check Point Name":"Jurong East","Check Point ID ":"1","Station Line Id":"NS","Station Number":"NS1"		},
+                   {"Check Point Name":"Bishan","Check Point ID ":"2","Station Line Id":"NS","Station Number":"NS17"			},
+                   {"Check Point Name":"Newton","Check Point ID ":"3","Station Line Id":"NS","Station Number":"NS21"			},
+                   {"Check Point Name":"Dhoby Ghaut","Check Point ID ":"4","Station Line Id":"NS","Station Number":"NS24"		},
+                   {"Check Point Name":"Marina Bay","Check Point ID ":"5","Station Line Id":"NS","Station Number":"NS27"		},
+                   {"Check Point Name":"North East Line","Check Point ID ":"","Station Line Id":"","Station Number":""			},
+                   {"Check Point Name":"Habour Front","Check Point ID ":"1","Station Line Id":"NE","Station Number":"NE1"		},
+                   {"Check Point Name":"Outram Park","Check Point ID ":"2","Station Line Id":"NE","Station Number":"NE3"		},
+                   {"Check Point Name":"China Town","Check Point ID ":"3","Station Line Id":"NE","Station Number":"NE4"		},
+                   {"Check Point Name":"Dhoby Ghaut","Check Point ID ":"4","Station Line Id":"NE","Station Number":"NE6"		},
+                   {"Check Point Name":"Little India","Check Point ID ":"5","Station Line Id":"NE","Station Number":"NE7"		},
+                   {"Check Point Name":"Serangoon","Check Point ID ":"6","Station Line Id":"NE","Station Number":"NE12"		},
+                   {"Check Point Name":"Circle Line","Check Point ID ":"","Station Line Id":"","Station Number":""				},
+                   {"Check Point Name":"Harbour Front","Check Point ID ":"1","Station Line Id":"CC","Station Number":"CC29"	},
+                   {"Check Point Name":"Buona Vista","Check Point ID ":"2","Station Line Id":"CC","Station Number":"CC22"		},
+                   {"Check Point Name":"Botanic Garden","Check Point ID ":"3","Station Line Id":"CC","Station Number":"CC19"	},
+                   {"Check Point Name":"Bishan","Check Point ID ":"4","Station Line Id":"CC","Station Number":"CC15"			},
+                   {"Check Point Name":"Serangoon","Check Point ID ":"5","Station Line Id":"CC","Station Number":"CC13"		},
+                   {"Check Point Name":"Paya Lebar","Check Point ID ":"6","Station Line Id":"CC","Station Number":"CC9"		},
+                   {"Check Point Name":"Promenade","Check Point ID ":"7","Station Line Id":"CC","Station Number":"CC4"			},
+                   {"Check Point Name":"Dhoby Ghaut","Check Point ID ":"8","Station Line Id":"CC","Station Number":"CC1"		},
+                   {"Check Point Name":"Downtown Line","Check Point ID ":"","Station Line Id":"","Station Number":""			},
+                   {"Check Point Name":"Botanic Garden","Check Point ID ":"1","Station Line Id":"DT","Station Number":"DT9"	},
+                   {"Check Point Name":"Newton","Check Point ID ":"2","Station Line Id":"DT","Station Number":"DT11"			},
+                   {"Check Point Name":"Little India","Check Point ID ":"3","Station Line Id":"DT","Station Number":"DT12"		},
+                   {"Check Point Name":"Bugis","Check Point ID ":"4","Station Line Id":"DT","Station Number":"DT14"			},
+                   {"Check Point Name":"Promenade","Check Point ID ":"5","Station Line Id":"DT","Station Number":"DT15"		},
+                   {"Check Point Name":"Bayfront","Check Point ID ":"6","Station Line Id":"DT","Station Number":"DT16"			},
+                   {"Check Point Name":"Chinatown","Check Point ID ":"7","Station Line Id":"DT","Station Number":"DT19"		},
+                   {"Check Point Name":"BayFront","Check Point ID ":"1","Station Line Id":"CE","Station Number":"CE1"			},
+                   {"Check Point Name":"Marina Bay","Check Point ID ":"2","Station Line Id":"CE","Station Number":"CE2"		}
+        
 
                    ]
 }
