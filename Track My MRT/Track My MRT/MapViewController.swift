@@ -52,7 +52,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate,MFMessageCo
         self.longitude = userLocation!.coordinate.longitude
         let camera = GMSCameraPosition.camera(withLatitude: userLocation!.coordinate.latitude, longitude: userLocation!.coordinate.longitude, zoom: 10.0)
         let coordinates = CLLocationCoordinate2DMake(userLocation!.coordinate.latitude, userLocation!.coordinate.longitude)
-        mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height - 120), camera: camera)
+        mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height - 150), camera: camera)
     
         mapView.settings.myLocationButton = true
         mapView.isMyLocationEnabled = true
