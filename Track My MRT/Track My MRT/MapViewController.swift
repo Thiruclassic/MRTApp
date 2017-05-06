@@ -43,6 +43,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate,MFMessageCo
         print("from: \(selectedStations.fromStation) :: to: \(selectedStations.toStation)")
         locateStations(self.selectedStations.fromStation)
         locateStations(self.selectedStations.toStation)
+        locationManager.startUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -107,7 +108,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate,MFMessageCo
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        mapView.clear()
+    }
     
 }
 
