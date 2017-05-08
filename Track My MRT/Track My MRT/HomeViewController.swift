@@ -76,7 +76,7 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
         
          self.navigationController?.pushViewController(routeViewController, animated: true)
         
-        let stationData:StationData = getStationData(fromStation: fromStationName.text!, toStation: toStationName.text!)
+        let stationData:StationData = getRouteDetails(fromStation: fromStationName.text!, toStation: toStationName.text!,isIntermediate: false)
     
         routeViewController.stationData=stationData
         }
