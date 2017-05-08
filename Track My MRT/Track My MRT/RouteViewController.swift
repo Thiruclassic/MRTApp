@@ -26,6 +26,8 @@ class RouteViewController : UIViewController{
     @IBOutlet weak var nextArrivalTimeLabel: UILabel!
 
     @IBOutlet weak var fareLabel: UILabel!
+    
+    @IBOutlet weak var intermediateStatusLabel: UILabel!
 
 
     @IBOutlet weak var toStationLabel: UILabel!
@@ -56,6 +58,17 @@ class RouteViewController : UIViewController{
         
         arrivalTimeLabel.text = stationData.arrivalTime
         nextArrivalTimeLabel.text = stationData.nxtTrainArrivalTime
+        
+       
+            intermediateStatusLabel.text = ""
+        
+        for intermediateStation in stationData.intermediateStations
+        {
+
+            intermediateStatusLabel.text! = intermediateStatusLabel.text! + "Get down at " + intermediateStation + " "
+
+        }
+        
         
         readStationArrivalTime(stnCode: stationData.stationCode,stnDirectionId: stationData.stationDirectionId)
     
