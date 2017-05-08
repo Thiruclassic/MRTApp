@@ -407,6 +407,77 @@ func getsampleRouteDetails(fromStation:String,toStation:String,isIntermediate:Bo
     var names = [String]()
     var idArr = [Int]()
     
+
+    for station in stations{
+        
+        
+        print("enter \(station)")
+        prepareMrtStationStatement()
+        sqlite3_bind_text(selectStatement, 1, station.utf8String, -1, SQLITE_TRANSIENT);
+        
+        if (sqlite3_step(selectStatement) == SQLITE_ROW)
+        {
+            
+            print("enter inside")
+            let stationModel:StationModel = StationModel()
+            
+            // stationModel.stationName
+            
+            // stationModel.stationCode
+            
+            let code_buf = sqlite3_column_text(selectStatement, 0)
+            stationModel.stationCode = String(cString: code_buf!)
+            let dist_buf = sqlite3_column_text(selectStatement, 1)
+            let distanceStr = String(cString: dist_buf!)
+            stationModel.stationDistance = distanceStr.components(separatedBy: ",")
+            
+            
+            
+            let name_buf = sqlite3_column_text(selectStatement, 2)
+            stationModel.stationName = String(cString: name_buf!)
+            let id_buf = sqlite3_column_text(selectStatement, 8)
+            
+            stationModel.stationPrimaryId = Int(String(cString: id_buf!))
+            print(stationModel.stationPrimaryId)
+            
+            
+            let color_buf = sqlite3_column_text(selectStatement, 3)
+            let colors = String(cString: color_buf!)
+            
+            print(colors)
+            
+            stationModel.colors = colors.components(separatedBy: ",")
+            
+            print("station colors \(stationModel.colors)")
+            
+            let station_line_ids = sqlite3_column_text(selectStatement, 4)
+            let stationLinesStr = String(cString: station_line_ids!)
+            print("stationLinecodesstr \(stationLinesStr)")
+            stationModel.stationLineCodes = stationLinesStr.components(separatedBy: " ")
+            
+            print("stationLinecodesarr \(stationModel.stationLineCodes)")
+            
+            
+            
+            let stationCodes = sqlite3_column_text(selectStatement, 5)
+            let stationCodesStr = String(cString: stationCodes!)
+            stationModel.stationLaneCodes = stationCodesStr.components(separatedBy: ",")
+            print("stationLinecodesstr \(stationModel.stationLaneCodes)")
+            
+            //stationModels.append(stationModel)
+            print("stationLinecodesstr \(stationLinesStr)")
+            sqlite3_reset(selectStatement);
+            sqlite3_clear_bindings(selectStatement);
+            //codes.append(code)
+           // names.append(name)
+            
+            //distances.append(distance)
+        }
+    }
+    
+    //print(stationModels.count)
+    //let fromStationModel:StationModel = stationModels[0]
+    //let toStationModel:StationModel = stationModels[1]
     
         
    // print(stationModels.count)
@@ -604,6 +675,48 @@ func getsampleRouteDetails(fromStation:String,toStation:String,isIntermediate:Bo
     sqlite3_clear_bindings(selectStatement);
     
     return stationData
+}
+
+
+func getStationlocationData(fromStation:String,toStation:String) -> RouteModel
+{
+    
+    let fromStr = fromStation as NSString?
+    let toStr = toStation as NSString?
+    
+    var stations:[NSString] = [NSString] ()
+    stations.append(fromStr!)
+    stations.append(toStr!)
+
+    let selectedStationsData = RouteModel()
+    var index = 0;
+
+    
+    for station in stations
+    {
+     prepareMrtStationStatement()
+               sqlite3_bind_text(selectStatement, 1, station.utf8String, -1, SQLITE_TRANSIENT);
+        
+        let returncode=sqlite3_step(selectStatement)
+        if ( returncode == SQLITE_ROW)
+        {
+            
+            let longitude_buf = sqlite3_column_text(selectStatement, 6)
+            selectedStationsData.coordinates.insert(String(cString: longitude_buf!), at: index)
+            index += 1
+            let latitude_buf = sqlite3_column_text(selectStatement, 7)
+            selectedStationsData.coordinates.insert(String(cString: latitude_buf!), at: index)
+        }
+        index += 1
+    }
+
+
+    sqlite3_reset(selectStatement);
+    sqlite3_clear_bindings(selectStatement);
+    selectedStationsData.fromStation = fromStation
+    selectedStationsData.toStation = toStation
+    
+    return selectedStationsData
 }
 
 
