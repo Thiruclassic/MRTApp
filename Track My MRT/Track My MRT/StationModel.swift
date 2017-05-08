@@ -18,6 +18,7 @@ class StationModel{
     var stationLineCodes:[String] = [String] ()
     var stationLaneCodes:[String] = [String] ()
     var stationNumber:String!
+    var isIntermediateStation:Bool = false
     var colors:[String] = [String] ()
     
 }

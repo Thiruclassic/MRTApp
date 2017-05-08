@@ -18,4 +18,6 @@ class StationData
     var stationDirectionId:Int!
     var arrivalTime:String!
     var nxtTrainArrivalTime:String!
+    var totalStations:Int!
+    var intermediateStations:[String] = [String] ()
 }

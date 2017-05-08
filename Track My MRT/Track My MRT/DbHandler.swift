@@ -12,14 +12,16 @@ var mrtDb:OpaquePointer?=nil
 var insertStatement:OpaquePointer?=nil
 var selectStatement:OpaquePointer?=nil
 
+var interLinkStations:[String] = [String] ()
+
 let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
 
+var isIntermediateLineFound:Bool = false
 
 func createTables()
 {
     if(openDatabase())
     {
-
     createStationTable()
     createDistanceTable()
     createStationLaneTable()
@@ -158,7 +160,7 @@ func prepareCheckpointStatement()
     var cSql = CHECKPOINT_INSERT_QUERY.cString(using: String.Encoding.utf8)
     sqlite3_prepare_v2(mrtDb, cSql, -1, &insertStatement, nil)
     
-    cSql = CHECKPOINT_SELECT_QUERY.cString(using: String.Encoding.utf8)
+    cSql = CHECKPOINT_CONNECTION_SELECT_QUERY.cString(using: String.Encoding.utf8)
     sqlite3_prepare_v2(mrtDb, cSql, -1, &selectStatement, nil)
 }
 
@@ -287,7 +289,7 @@ func getFare(distance:Double) -> String
 {
     let fareId:Int = computeFareId(distance: distance)
    
-
+   // print(fareId)
     prepareDistanceStatment()
     let distanceStr = String(fareId) as NSString?
     sqlite3_bind_text(selectStatement, 1, distanceStr!.utf8String, -1, SQLITE_TRANSIENT);
@@ -378,7 +380,8 @@ func createStationData()
     
 }
 
-func getStationData(fromStation:String,toStation:String) -> StationData
+
+func getsampleRouteDetails(fromStation:String,toStation:String,isIntermediate:Bool) -> StationData
 {
     
     
@@ -387,6 +390,9 @@ func getStationData(fromStation:String,toStation:String) -> StationData
     
     stationData.fromStation=fromStation
     stationData.toStation=toStation
+    stationData.totalStations = 0
+    stationData.totalDistance = 0
+    
     let fromStr = fromStation as NSString?
     let toStr = toStation as NSString?
     
@@ -394,95 +400,63 @@ func getStationData(fromStation:String,toStation:String) -> StationData
     stations.append(fromStr!)
     stations.append(toStr!)
     
-    var stationModels:[StationModel] = [StationModel] ()
+   // var stationModels:[StationModel] = [StationModel] ()
     print(stations.count)
     var distances = [String]()
     var codes = [String]()
     var names = [String]()
     var idArr = [Int]()
     
-    for station in stations{
-        
-        
-        print("enter \(station)")
-        prepareMrtStationStatement()
-        sqlite3_bind_text(selectStatement, 1, station.utf8String, -1, SQLITE_TRANSIENT);
-        
-        if (sqlite3_step(selectStatement) == SQLITE_ROW)
-        {
-            
-            print("enter inside")
-            let stationModel:StationModel = StationModel()
-            
-            // stationModel.stationName
-            
-            // stationModel.stationCode
-            
-            let code_buf = sqlite3_column_text(selectStatement, 0)
-            stationModel.stationCode = String(cString: code_buf!)
-            let dist_buf = sqlite3_column_text(selectStatement, 1)
-            let distanceStr = String(cString: dist_buf!)
-            stationModel.stationDistance = distanceStr.components(separatedBy: ",")
-            
-            let name_buf = sqlite3_column_text(selectStatement, 2)
-            stationModel.stationName = String(cString: name_buf!)
-            let id_buf = sqlite3_column_text(selectStatement, 8)
-            
-            stationModel.stationPrimaryId = Int(String(cString: id_buf!))
-            print(stationModel.stationPrimaryId)
-            
-            
-            let color_buf = sqlite3_column_text(selectStatement, 3)
-            let colors = String(cString: color_buf!)
-            
-            print(colors)
-            
-            stationModel.colors = colors.components(separatedBy: ",")
-            
-            print("station colors \(stationModel.colors)")
-            
-            let station_line_ids = sqlite3_column_text(selectStatement, 4)
-            let stationLinesStr = String(cString: station_line_ids!)
-            print("stationLinecodesstr \(stationLinesStr)")
-            stationModel.stationLineCodes = stationLinesStr.components(separatedBy: " ")
-            
-            print("stationLinecodesarr \(stationModel.stationLineCodes)")
-            
-            
-            
-            let stationCodes = sqlite3_column_text(selectStatement, 5)
-            let stationCodesStr = String(cString: stationCodes!)
-            stationModel.stationLaneCodes = stationCodesStr.components(separatedBy: ",")
-            print("stationLinecodesstr \(stationModel.stationLaneCodes)")
-            
-            stationModels.append(stationModel)
-            print("stationLinecodesstr \(stationLinesStr)")
-            sqlite3_reset(selectStatement);
-            sqlite3_clear_bindings(selectStatement);
-            //codes.append(code)
-           // names.append(name)
-            
-            //distances.append(distance)
-        }
-    }
     
-    print(stationModels.count)
-    let fromStationModel:StationModel = stationModels[0]
-    let toStationModel:StationModel = stationModels[1]
-    
+        
+   // print(stationModels.count)
+    let fromStationModel:StationModel = getStation(stationName: fromStation)
+    let toStationModel:StationModel = getStation(stationName: toStation)
+    stationData.stationCode = fromStationModel.stationCode
     var isSameLine:Bool = false
     print("reached")
     print("fromstation color \(fromStationModel.colors)")
     print("tostation color \(toStationModel.colors)")
+    
     var lane:String = String()
+
+    var isDirectLane:Bool = false
     for templane in fromStationModel.stationLaneCodes
     {
-        if(toStationModel.stationLaneCodes.contains(templane))
-        {
+         if(toStationModel.stationLaneCodes.contains(templane))
+         {
             lane = templane
+            isDirectLane = true
+            break
+        }
+    }
+    
+    if(isIntermediate)
+    {
+        isIntermediateLineFound = true
+    }
+        if(isDirectLane)
+        {
             isSameLine = true
             
-            print("Same Lane data")
+            print("Same Lane data \(lane)")
+            
+            //isIntermediateLineFound = true
+            
+            
+            interLinkStations.append(fromStation)
+            
+            if(isIntermediate)
+            {
+                print("Need to get down at \(fromStation)")
+            }
+            
+            print(fromStationModel.stationLaneCodes)
+            print(toStationModel.stationLaneCodes)
+            
+            let fromStationNumber:Int! = Int(fromStationModel.stationLineCodes[fromStationModel.stationLaneCodes.index(of: lane)!].replacingOccurrences(of: lane, with: ""))!
+            
+            let toStationNumber:Int! = Int(toStationModel.stationLineCodes[toStationModel.stationLaneCodes.index(of: lane)!].replacingOccurrences(of: lane, with: ""))!
             
             
             distances.append(fromStationModel.stationDistance[fromStationModel.stationLaneCodes.index(of: lane)!])
@@ -490,11 +464,15 @@ func getStationData(fromStation:String,toStation:String) -> StationData
             
             stationData.totalDistance = abs(Double(distances[0])! - Double(distances[1])!)
             
-            stationData.fare = getFare(distance: stationData.totalDistance)
+            
             
             print("reached next step")
             
+            print(fromStationNumber)
+            print(toStationNumber)
+            stationData.totalStations = abs(fromStationNumber - toStationNumber)
             
+            print("total stations \(stationData.totalStations!)")
             
             
             if(fromStationModel.stationPrimaryId > toStationModel.stationPrimaryId)
@@ -508,26 +486,98 @@ func getStationData(fromStation:String,toStation:String) -> StationData
             
             stationData.stationCode = fromStationModel.stationCode
 
-            break;
         }
         else
         {
             
+            
+       if(!isIntermediateLineFound)
+            {
        // fromStationModel.stationLineCodes[fromStationModel.stationLaneCodes.index(of: lane)]
       //let connectingStations:[String] = getConnectingLane(lane: fromStationModel.stationLaneCodes.remove(at: fromStationModel.stationLaneCodes.index(of: lane)))
             
            // var connectingLanes:String = [String]()
             var laneArray:[String] = [String] ()
-            for stationModel in stationModels
+            laneArray.insert(contentsOf: fromStationModel.stationLaneCodes, at: laneArray.count)
+           // laneArray.insert(contentsOf: toStationModel.stationLaneCodes, at: laneArray.count)
+            //laneArray = removeDuplicates(array: laneArray)
+            
+            let intermediateStations = getConnectingLane(lanes: laneArray)
+            
+            var interStations:[StationData] = [StationData] ()
+            
+            var isLineFound:Bool = false
+            
+            for intermediateStation in intermediateStations
             {
-                laneArray.insert(contentsOf: stationModel.stationLaneCodes, at: laneArray.count)
+                let stationModel:StationModel = getStation(stationName: intermediateStation)
+                
+                
+                print("intermediate station lane codes\(stationModel.stationLaneCodes)")
+                print("intermediate station line codes\(stationModel.stationLineCodes)")
+
+                for stationLane in fromStationModel.stationLaneCodes
+                {
+                    print("iterating station Lanes \(stationLane)")
+                    
+                    if(stationModel.stationLaneCodes.contains(stationLane))
+                    {
+                        let intermediateStationLineCode:String = stationModel.stationLineCodes[stationModel.stationLaneCodes.index(of: stationLane)!]
+                        let fromStationLineCode:String = fromStationModel.stationLineCodes[fromStationModel.stationLaneCodes.index(of: stationLane)!]
+                        // let toStationLineCode:String = toStationModel.stationLineCodes[toStationModel.stationLaneCodes.index(of: stationLane)!]
+                        print("intermediate station \(intermediateStationLineCode)")
+                        
+                        let intermediateStationNumber:Int! = Int(intermediateStationLineCode.replacingOccurrences(of: stationLane, with: ""))
+                        let fromStationNumber:Int! = Int(fromStationLineCode.replacingOccurrences(of: stationLane, with: ""))
+                        
+                        //let toStationNumber:Int! = Int(toStationLineCode.replacingOccurrences(of: stationLane, with: ""))
+                        
+                        distances.append(fromStationModel.stationDistance[fromStationModel.stationLaneCodes.index(of: stationLane)!])
+                        distances.append(stationModel.stationDistance[stationModel.stationLaneCodes.index(of:stationLane)!])
+                        print("error checkind \(distances)")
+                        stationData.totalDistance = stationData.totalDistance + abs(Double(distances[0])! - Double(distances[1])!)
+                        
+                        print("total station before recursive \(stationData.totalStations)")
+                        print("station number \(intermediateStationNumber!)")
+                        
+                      //  print("get down at \(stationModel.stationName)")
+                        
+                        stationData.totalStations = stationData.totalStations + abs(fromStationNumber - intermediateStationNumber)
+                        let interStationData:StationData = getRouteDetails(fromStation: intermediateStation, toStation: toStation,isIntermediate: true)
+                        
+                       // stationData.totalStations = stationData.totalStations + interStationData.totalStations
+                       //stationData.totalDistance = stationData.totalDistance + interStationData.totalDistance
+                        isLineFound = true
+                        interStations.append(interStationData)
+                    }
+                }
             }
-            laneArray = removeDuplicates(array: laneArray)
+                
             
-            getConnectingLane(lanes: laneArray)
+        
             
+           // getConnectingLane(lanes: fromStationModel.stationLaneCodes)
+            
+            var totalStations:Int = 100
+            var totalDistance:Double = 0
+                
+            var tempStationData:StationData = StationData()
+            for interStationData in interStations
+            {
+                if(interStationData.totalStations < totalStations && interLinkStations.contains(interStationData.fromStation))
+                {
+                    totalStations = interStationData.totalStations
+                    totalDistance = interStationData.totalDistance
+                    tempStationData = interStationData
+                }
+            }
+            stationData.totalStations = totalStations
+            stationData.totalDistance = totalDistance
+                 print("get down actually at \(tempStationData.fromStation)")
+            }
+           
         }
-    }
+    
     
        /*if(idArr[names.index(of: fromStation)!] > idArr[names.index(of: toStation)!])
     {
@@ -537,13 +587,17 @@ func getStationData(fromStation:String,toStation:String) -> StationData
     {
         stationData.stationDirectionId=2
     }*/
+   
     
     if(stationData.stationDirectionId == nil)
     {
         stationData.stationDirectionId = 1
     }
+    print("final total stations \(stationData.totalStations)")
     
-    
+    print("final total distance \(stationData.totalDistance)")
+
+    stationData.fare = getFare(distance: stationData.totalDistance)
    // stationData.stationCode=codes[names.index(of: fromStation)!]
   
     sqlite3_reset(selectStatement);
@@ -558,48 +612,52 @@ func getStationDirectionsData(fromStationModel:StationModel, toStationModel:Stat
     
 }
 
-func getConnectingLane(lanes: [String]) -> [StationModel]
+func getConnectingLane(lanes: [String]) -> [String]
 {
-    
-    prepareCheckpointStatement()
-   
-    
     print("intermediate lanes \(lanes)")
     
     //var queryString  =
+    var intermediateStations:[String] = [String] ()
     
-    var intermediateStations:[StationModel] = [StationModel] ()
-
-    
-   /* for lane in lanes
+ /*
+    var replaceStr:String = ""
+    var count:Int = 0
+   for lane in lanes
     {
+        
+        replaceStr = replaceStr + "'" + lane + "'"
+        if(count != lanes.count - 1)
+        {
+         replaceStr = replaceStr + ","
+        }
+        count = count + 1
+       
+    }
+    print("\(replaceStr)")*/
+  //  CHECKPOINT_SELECT_QUERY = CHECKPOINT_SELECT_QUERY.replacingOccurrences(of: "replaceString", with: replaceStr)
     
+    prepareCheckpointStatement()
+    
+    for lane in lanes
+    {
      let laneStr = lane as NSString?
     
+    
+    
     sqlite3_bind_text(selectStatement, 1, laneStr!.utf8String, -1, SQLITE_TRANSIENT);
-    print("lane code \(lane)")
+    print("checkpoint lane code \(lane)")
     while(sqlite3_step(selectStatement) == SQLITE_ROW)
     {
         
-        let intermediateStation:StationModel = StationModel()
-        
         let name_buf = sqlite3_column_text(selectStatement, 0)
-        intermediateStation.stationName =  String(cString: name_buf!)
-
+        let intermediateStation =  String(cString: name_buf!)
+        print("checkpoint station name \(String(cString:name_buf!))")
         
-        let lineid_buf = sqlite3_column_text(selectStatement, 1)
-        let lineid = String(cString: lineid_buf!)
-        intermediateStation.stationLineCodes = [lineid]
-       // print("checkpoint stations id \(id)")
-        
-        let lane_buf = sqlite3_column_text(selectStatement, 2)
-        let lane_code = String(cString: lane_buf!)
-        //intermediateStation.stationLaneCodes = [lane_code]
-        //intermediateStations.append(intermediateStation)
+      
+        intermediateStations.append(intermediateStation)
         
         
-        
-        print("checkpoint stations lanecode \(lane_code)")
+       // print("checkpoint stations lanecode \(lane_code)")
     }
     }
    /* else
@@ -609,7 +667,7 @@ func getConnectingLane(lanes: [String]) -> [StationModel]
         print(ERROR_MESSAGE, error);
     }*/
     sqlite3_reset(selectStatement);
-    sqlite3_clear_bindings(selectStatement);*/
+    sqlite3_clear_bindings(selectStatement);
 
     
     return intermediateStations
@@ -629,4 +687,443 @@ func removeDuplicates(array:[String]) -> [String]
     
     return items
 }
+
+func getStation(stationName:String) -> StationModel
+{
+    prepareMrtStationStatement()
+
+    let stationModel:StationModel = StationModel()
+    
+    let station = stationName as NSString?
+    
+    sqlite3_bind_text(selectStatement, 1, station!.utf8String, -1, SQLITE_TRANSIENT);
+    
+    if (sqlite3_step(selectStatement) == SQLITE_ROW)
+    {
+        
+        print("enter inside")
+        
+        // stationModel.stationName
+        
+        // stationModel.stationCode
+        
+        let code_buf = sqlite3_column_text(selectStatement, 0)
+        stationModel.stationCode = String(cString: code_buf!)
+        let dist_buf = sqlite3_column_text(selectStatement, 1)
+        let distanceStr = String(cString: dist_buf!)
+        stationModel.stationDistance = distanceStr.components(separatedBy: ",")
+        
+        let name_buf = sqlite3_column_text(selectStatement, 2)
+        stationModel.stationName = String(cString: name_buf!)
+        let id_buf = sqlite3_column_text(selectStatement, 8)
+        
+        stationModel.stationPrimaryId = Int(String(cString: id_buf!))
+        print(stationModel.stationPrimaryId)
+        
+        
+        let color_buf = sqlite3_column_text(selectStatement, 3)
+        let colors = String(cString: color_buf!)
+        
+        print(colors)
+        
+        stationModel.colors = colors.components(separatedBy: ",")
+        
+        print("station colors \(stationModel.colors)")
+        
+        let station_line_ids = sqlite3_column_text(selectStatement, 4)
+        let stationLinesStr = String(cString: station_line_ids!)
+        print("stationLinecodesstr \(stationLinesStr)")
+        stationModel.stationLineCodes = stationLinesStr.components(separatedBy: ",")
+        
+        print("stationLinecodesarr \(stationModel.stationLineCodes)")
+        
+        
+        
+        let stationCodes = sqlite3_column_text(selectStatement, 5)
+        let stationCodesStr = String(cString: stationCodes!)
+        stationModel.stationLaneCodes = stationCodesStr.components(separatedBy: ",")
+        print("stationLinecodesstr \(stationModel.stationLaneCodes)")
+        
+        print("stationLinecodesstr \(stationLinesStr)")
+       
+        //codes.append(code)
+        // names.append(name)
+        
+        //distances.append(distance)
+    }
+    
+    sqlite3_reset(selectStatement);
+    sqlite3_clear_bindings(selectStatement);
+    
+    return stationModel
+}
+
+
+
+func getConnectingStations(fromStationModel:StationModel, toStationModel:StationModel) -> [StationModel]
+{
+    
+    
+    
+    prepareCheckpointStatement()
+    
+           //let laneStr = lane as NSString?
+    var checkPointStations:[StationModel] = [StationModel] ()
+    
+
+        
+        
+        //sqlite3_bind_text(selectStatement, 1, laneStr!.utf8String, -1, SQLITE_TRANSIENT);
+        //print("checkpoint lane code \(lane)")
+        while(sqlite3_step(selectStatement) == SQLITE_ROW)
+        {
+            
+            let checkPointStation:StationModel = StationModel()
+            let name_buf = sqlite3_column_text(selectStatement, 0)
+            let name = String(cString: name_buf!)
+            checkPointStation.stationName = name
+            
+            
+            let stnid_buf = sqlite3_column_text(selectStatement, 1)
+            let stnId = String(cString: stnid_buf!)
+            let stnIDarr:[String] = stnId.components(separatedBy: ",")
+            checkPointStation.stationLineCodes = stnIDarr
+            
+            //print("checkpoint station id \(stnId)")
+            
+            let laneid_buf = sqlite3_column_text(selectStatement, 2)
+            let laneId = String(cString: laneid_buf!)
+            let lanearr:[String] = laneId.components(separatedBy: ",")
+            checkPointStation.stationLaneCodes = lanearr
+            //print("checkpoint laneid \(laneId)")
+            
+            checkPointStations.append(checkPointStation)
+            
+            
+            
+            //intermediateStations.append(intermediateStation)
+            
+            
+            // print("checkpoint stations lanecode \(lane_code)")
+        }
+    
+    print("returning checkpoints ")
+    
+    /* else
+     {
+     print(ERROR_CODE, sqlite3_errcode (mrtDb));
+     let error = String(cString: sqlite3_errmsg(mrtDb));
+     print(ERROR_MESSAGE, error);
+     }*/
+    sqlite3_reset(selectStatement);
+    sqlite3_clear_bindings(selectStatement);
+    
+    
+    return checkPointStations
+    
+}
+func findOneIntersectinLanes(fromStationModel:StationModel, toStationModel:StationModel,checkpointStations:[StationModel]) -> [StationData]
+{
+    var stationDatas:[StationData] = [StationData] ()
+
+    
+    for checkpointStation in checkpointStations
+    {
+    for fromlane in fromStationModel.stationLaneCodes
+    {
+        for toLane in toStationModel.stationLaneCodes
+        {
+            if(checkpointStation.stationLaneCodes.contains(fromlane) && checkpointStation.stationLaneCodes.contains(toLane))
+            {
+                
+                let stationData:StationData = StationData()
+                stationData.fromStation = fromStationModel.stationName
+                print(checkpointStation.stationLaneCodes)
+                
+                
+                let fromLaneId:String = checkpointStation.stationLineCodes[checkpointStation.stationLaneCodes.index(of: fromlane)!]
+                let toLaneId:String = checkpointStation.stationLineCodes[checkpointStation.stationLaneCodes.index(of: toLane)!]
+                
+                let fromCheckpointNo:Int! = Int(fromLaneId.replacingOccurrences(of: fromlane, with: ""))
+                let toCheckpointNo:Int! = Int(toLaneId.replacingOccurrences(of: toLane, with: ""))
+                
+                let fromStationNo:Int! = Int(fromStationModel.stationLineCodes[fromStationModel.stationLaneCodes.index(of: fromlane)!].replacingOccurrences(of: fromlane, with: ""))
+                
+                let toStationNo:Int! = Int(toStationModel.stationLineCodes[toStationModel.stationLaneCodes.index(of: toLane)!].replacingOccurrences(of: toLane, with: ""))
+                
+                var totalStations:Int = 0
+                stationData.intermediateStations.append(checkpointStation.stationName)
+                totalStations = totalStations + abs(fromCheckpointNo - fromStationNo)
+                totalStations = totalStations + abs(toCheckpointNo - toStationNo)
+                stationData.totalStations = totalStations
+                print("checkpoint station name \(checkpointStation.stationName)  \(totalStations)")
+                stationDatas.append(stationData)
+                
+                
+            }
+        }
+    }
+    }
+    
+    return stationDatas
+
+}
+
+
+func findTwoIntersectinLanes(fromStationModel:StationModel, toStationModel:StationModel,checkpointStations:[StationModel]) -> [StationData]
+
+{
+    var stationDatas:[StationData] = [StationData] ()
+    
+    
+    for checkpointStation in checkpointStations
+    {
+      
+        for fromlane in fromStationModel.stationLaneCodes
+        {
+            if(checkpointStation.stationLaneCodes.contains(fromlane))
+            {
+                let stationData:StationData = StationData()
+                stationData.fromStation = fromStationModel.stationName
+                print(checkpointStation.stationLaneCodes)
+                
+                print("before remove \(checkpointStation.stationLaneCodes)")
+                //checkpointStation.stationLaneCodes.remove(at: checkpointStation.stationLaneCodes.index(of: fromlane)!)
+                
+                
+                print("after remove \(checkpointStation.stationLaneCodes)")
+                
+                 let fromLaneId:String = checkpointStation.stationLineCodes[checkpointStation.stationLaneCodes.index(of: fromlane)!]
+                
+                for subLane in checkpointStation.stationLaneCodes
+                {
+            
+                    if(subLane != fromlane)
+                    {
+            for toLane in toStationModel.stationLaneCodes
+            {
+                for subcheckpoint in checkpointStations
+                {
+                    if(checkpointStation.stationName != subcheckpoint.stationName)
+                    {
+                        
+                    if(subcheckpoint.stationLaneCodes.contains(subLane) && subcheckpoint.stationLaneCodes.contains(toLane))
+                        {
+                    
+                       
+               
+                let toLaneId:String = subcheckpoint.stationLineCodes[subcheckpoint.stationLaneCodes.index(of: toLane)!]
+                
+                let fromSubLaneId:String = checkpointStation.stationLineCodes[checkpointStation.stationLaneCodes.index(of: subLane)!]
+                            
+                            let fromMidLaneId:String = checkpointStation.stationLineCodes[checkpointStation.stationLaneCodes.index(of: fromlane)!]
+                            
+                            let toMidLaneId:String = subcheckpoint.stationLineCodes[subcheckpoint.stationLaneCodes.index(of: subLane)!]
+                        
+                            print("lanes \(toLaneId) \(fromSubLaneId) \(fromMidLaneId) \(toMidLaneId)")
+                        //let toSublane:String = subcheckpoint.stationLaneCodes
+                
+                let fromsubCheckpointNo:Int! = Int(fromSubLaneId.replacingOccurrences(of: subLane, with: ""))
+                let toCheckpointNo:Int! = Int(toLaneId.replacingOccurrences(of: toLane, with: ""))
+                            
+                let toSubCheckpointNo:Int! = Int(toMidLaneId.replacingOccurrences(of: subLane, with: ""))
+                        
+                        //let fromSubCheckpointNo:Int! = Int()
+                
+                let fromStationNo:Int! = Int(fromStationModel.stationLineCodes[fromStationModel.stationLaneCodes.index(of: fromlane)!].replacingOccurrences(of: fromlane, with: ""))
+                            
+                let fromSubStationNo:Int! = Int(fromMidLaneId.replacingOccurrences(of: fromlane, with: ""))
+                
+                let toStationNo:Int! = Int(toStationModel.stationLineCodes[toStationModel.stationLaneCodes.index(of: toLane)!].replacingOccurrences(of: toLane, with: ""))
+                
+                var totalStations:Int = 0
+                stationData.intermediateStations.append(checkpointStation.stationName)
+                totalStations = totalStations + abs(fromSubStationNo - fromStationNo) + abs (fromsubCheckpointNo - toSubCheckpointNo)
+                totalStations = totalStations + abs(toCheckpointNo - toStationNo)
+                stationData.totalStations = totalStations
+                print("checkpoint station name \(checkpointStation.stationName)  \(subcheckpoint.stationName) \(totalStations)")
+                stationDatas.append(stationData)
+                        }
+                    }
+                }
+            }
+                    
+                    }
+                    
+                }
+            }
+        }
+    }
+       /* for fromlane in fromStationModel.stationLaneCodes
+        {
+            for toLane in toStationModel.stationLaneCodes
+            {
+                if(checkpointStation.stationLaneCodes.contains(fromlane) && checkpointStation.stationLaneCodes.contains(toLane))
+                {
+                    
+                    let stationData:StationData = StationData()
+                    stationData.fromStation = fromStationModel.stationName
+                    print(checkpointStation.stationLaneCodes)
+                    
+                    
+                    let fromLaneId:String = checkpointStation.stationLineCodes[checkpointStation.stationLaneCodes.index(of: fromlane)!]
+                    let toLaneId:String = checkpointStation.stationLineCodes[checkpointStation.stationLaneCodes.index(of: toLane)!]
+                    
+                    let fromCheckpointNo:Int! = Int(fromLaneId.replacingOccurrences(of: fromlane, with: ""))
+                    let toCheckpointNo:Int! = Int(toLaneId.replacingOccurrences(of: toLane, with: ""))
+                    
+                    let fromStationNo:Int! = Int(fromStationModel.stationLineCodes[fromStationModel.stationLaneCodes.index(of: fromlane)!].replacingOccurrences(of: fromlane, with: ""))
+                    
+                    let toStationNo:Int! = Int(toStationModel.stationLineCodes[toStationModel.stationLaneCodes.index(of: toLane)!].replacingOccurrences(of: toLane, with: ""))
+                    
+                    var totalStations:Int = 0
+                    stationData.intermediateStations.append(checkpointStation.stationName)
+                    totalStations = totalStations + abs(fromCheckpointNo - fromStationNo)
+                    totalStations = totalStations + abs(toCheckpointNo - toStationNo)
+                    stationData.totalStations = totalStations
+                    print("checkpoint station name \(checkpointStation.stationName)  \(totalStations)")
+                    st``ationDatas.append(stationData)
+                    
+                    
+                }*/
+    
+    return [StationData] ()
+}
+
+func getRouteDetails(fromStation:String,toStation:String,isIntermediate:Bool) -> StationData
+{
+    let stationData:StationData = StationData()
+    
+    stationData.fromStation=fromStation
+    stationData.toStation=toStation
+    stationData.totalStations = 0
+    stationData.totalDistance = 0
+    
+    let fromStr = fromStation as NSString?
+    let toStr = toStation as NSString?
+    
+    var stations:[NSString] = [NSString] ()
+    stations.append(fromStr!)
+    stations.append(toStr!)
+    
+    // var stationModels:[StationModel] = [StationModel] ()
+    print(stations.count)
+    var distances = [String]()
+    var codes = [String]()
+    var names = [String]()
+    var idArr = [Int]()
+    
+    
+    
+    // print(stationModels.count)
+    let fromStationModel:StationModel = getStation(stationName: fromStation)
+    let toStationModel:StationModel = getStation(stationName: toStation)
+    stationData.stationCode = fromStationModel.stationCode
+    var isSameLine:Bool = false
+    
+    var lane:String = String()
+    
+    var isDirectLane:Bool = false
+    for templane in fromStationModel.stationLaneCodes
+    {
+        if(toStationModel.stationLaneCodes.contains(templane))
+        {
+            lane = templane
+            isDirectLane = true
+            break
+        }
+    }
+    
+    if(isDirectLane)
+    {
+        isSameLine = true
+        
+        print("Same Lane data \(lane)")
+        
+        //isIntermediateLineFound = true
+        
+        
+        interLinkStations.append(fromStation)
+        
+        if(isIntermediate)
+        {
+            print("Need to get down at \(fromStation)")
+        }
+        
+        print(fromStationModel.stationLaneCodes)
+        print(toStationModel.stationLaneCodes)
+        
+        let fromStationNumber:Int! = Int(fromStationModel.stationLineCodes[fromStationModel.stationLaneCodes.index(of: lane)!].replacingOccurrences(of: lane, with: ""))!
+        
+        let toStationNumber:Int! = Int(toStationModel.stationLineCodes[toStationModel.stationLaneCodes.index(of: lane)!].replacingOccurrences(of: lane, with: ""))!
+        
+        
+        distances.append(fromStationModel.stationDistance[fromStationModel.stationLaneCodes.index(of: lane)!])
+        distances.append(toStationModel.stationDistance[toStationModel.stationLaneCodes.index(of: lane)!])
+        
+        stationData.totalDistance = abs(Double(distances[0])! - Double(distances[1])!)
+        
+        print(fromStationNumber)
+        print(toStationNumber)
+        stationData.totalStations = abs(fromStationNumber - toStationNumber)
+        
+        print("total stations \(stationData.totalStations!)")
+        
+        
+        if(fromStationModel.stationPrimaryId > toStationModel.stationPrimaryId)
+        {
+            stationData.stationDirectionId=1
+        }
+        else
+        {
+            stationData.stationDirectionId=2
+        }
+        
+        stationData.stationCode = fromStationModel.stationCode
+        
+    }
+    
+    else
+    {
+        let checkpoints:[StationModel] = getConnectingStations(fromStationModel: fromStationModel, toStationModel: toStationModel)
+        var stationDatas:[StationData] = findOneIntersectinLanes(fromStationModel: fromStationModel, toStationModel: toStationModel,checkpointStations: checkpoints)
+        
+        findTwoIntersectinLanes(fromStationModel: fromStationModel, toStationModel: toStationModel,checkpointStations: checkpoints)
+        
+        var totalstations:Int = 100
+        var finalStationData:StationData = StationData()
+        for stationData in stationDatas
+        {
+            if (stationData.totalStations < totalstations)
+            {
+                finalStationData=stationData
+                totalstations = stationData.totalStations
+            }
+        }
+        
+        print("final station data: \(finalStationData.intermediateStations)")
+
+    }
+    
+    if(stationData.stationDirectionId == nil)
+    {
+        stationData.stationDirectionId = 1
+    }
+    print("final total stations \(stationData.totalStations)")
+    
+    print("final total distance \(stationData.totalDistance)")
+    
+    stationData.fare = getFare(distance: stationData.totalDistance)
+    // stationData.stationCode=codes[names.index(of: fromStation)!]
+    
+    sqlite3_reset(selectStatement);
+    sqlite3_clear_bindings(selectStatement);
+    
+    return stationData
+    
+    
+}
+
+
+
 
