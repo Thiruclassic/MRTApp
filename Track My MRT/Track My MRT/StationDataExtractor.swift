@@ -22,9 +22,14 @@ func readAllStations() -> Array<String>
         let name = String(describing: station[STATION_NAME]!)
         stationArray.append(name)
     }
-    
+    stationArray.sort()
     return stationArray
 
+}
+
+func sortAllStations(stationArray:[String])
+{
+    
 }
 
 func readJSONData(fileName:String,fileType:String,rootElement:String) -> [NSDictionary]
