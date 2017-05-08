@@ -44,7 +44,17 @@ class RouteViewController : UIViewController{
         
     }
 
-    
+    func addBackGroundImage()
+    {
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "background.jpg")?.draw(in: self.view.bounds)
+        
+        let image: UIImage! = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        self.view.backgroundColor = UIColor(patternImage: image)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +68,8 @@ class RouteViewController : UIViewController{
         nextArrivalTimeLabel.text = stationData.nxtTrainArrivalTime
         
         readStationArrivalTime(stnCode: stationData.stationCode,stnDirectionId: stationData.stationDirectionId)
+        
+        addBackGroundImage()
     
     }
     
