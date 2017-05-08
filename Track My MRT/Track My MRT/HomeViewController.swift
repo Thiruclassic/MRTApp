@@ -70,16 +70,39 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
     
     @IBAction func showRoute(_ sender: UIButton) {
         
-        
-        if(fromStationName.text != toStationName.text)
+        if (fromStationName.text == "" && toStationName.text == "")
         {
-        let routeViewController=self.storyboard?.instantiateViewController(withIdentifier: ROUTEVIEW_CONTROLLER_ID) as! RouteViewController
-        
-         self.navigationController?.pushViewController(routeViewController, animated: true)
-        
-        let stationData:StationData = getRouteDetails(fromStation: fromStationName.text!, toStation: toStationName.text!,isIntermediate: false)
-    
-        routeViewController.stationData=stationData
+            let alertPopUp:UIAlertController = UIAlertController(title: "Alert", message: "Source and Destination Station cannot be empty", preferredStyle: UIAlertControllerStyle.alert)
+            let cancelAction = UIAlertAction(title: "OK", style: .cancel) { action -> Void in
+            }
+            alertPopUp.addAction(cancelAction)
+            self.present(alertPopUp, animated: true, completion: nil)
+        }
+        else if (fromStationName.text == "" && !(toStationName.text == ""))
+        {
+            let alertPopUp:UIAlertController = UIAlertController(title: "Alert", message: "Source Station cannot be empty", preferredStyle: UIAlertControllerStyle.alert)
+            let cancelAction = UIAlertAction(title: "OK", style: .cancel) { action -> Void in
+            }
+            alertPopUp.addAction(cancelAction)
+            self.present(alertPopUp, animated: true, completion: nil)
+        }
+        else if (!(fromStationName.text == "") && toStationName.text == "")
+        {
+            let alertPopUp:UIAlertController = UIAlertController(title: "Alert", message: "Destination Station cannot be empty", preferredStyle: UIAlertControllerStyle.alert)
+            let cancelAction = UIAlertAction(title: "OK", style: .cancel) { action -> Void in
+            }
+            alertPopUp.addAction(cancelAction)
+            self.present(alertPopUp, animated: true, completion: nil)
+        }
+        else if(fromStationName.text != toStationName.text)
+        {
+            let routeViewController=self.storyboard?.instantiateViewController(withIdentifier: ROUTEVIEW_CONTROLLER_ID) as! RouteViewController
+            
+            self.navigationController?.pushViewController(routeViewController, animated: true)
+            
+            let stationData:StationData = getRouteDetails(fromStation: fromStationName.text!, toStation: toStationName.text!,isIntermediate: false)
+            
+            routeViewController.stationData=stationData
         }
         else
         {
