@@ -883,9 +883,8 @@ func findTwoIntersectinLanes(fromStationModel:StationModel, toStationModel:Stati
         {
             if(checkpointStation.stationLaneCodes.contains(fromlane))
             {
-                let stationData:StationData = StationData()
-                stationData.fromStation = fromStationModel.stationName
-                print(checkpointStation.stationLaneCodes)
+                
+                                print(checkpointStation.stationLaneCodes)
                 
                 print("before remove \(checkpointStation.stationLaneCodes)")
                 //checkpointStation.stationLaneCodes.remove(at: checkpointStation.stationLaneCodes.index(of: fromlane)!)
@@ -910,7 +909,9 @@ func findTwoIntersectinLanes(fromStationModel:StationModel, toStationModel:Stati
                     if(subcheckpoint.stationLaneCodes.contains(subLane) && subcheckpoint.stationLaneCodes.contains(toLane))
                         {
                     
-                       
+                       let stationData:StationData = StationData()
+                       stationData.fromStation = fromStationModel.stationName
+
                
                 let toLaneId:String = subcheckpoint.stationLineCodes[subcheckpoint.stationLaneCodes.index(of: toLane)!]
                 
@@ -938,6 +939,7 @@ func findTwoIntersectinLanes(fromStationModel:StationModel, toStationModel:Stati
                 
                 var totalStations:Int = 0
                 stationData.intermediateStations.append(checkpointStation.stationName)
+                stationData.intermediateStations.append(subcheckpoint.stationName)
                 totalStations = totalStations + abs(fromSubStationNo - fromStationNo) + abs (fromsubCheckpointNo - toSubCheckpointNo)
                 totalStations = totalStations + abs(toCheckpointNo - toStationNo)
                 stationData.totalStations = totalStations
@@ -987,7 +989,7 @@ func findTwoIntersectinLanes(fromStationModel:StationModel, toStationModel:Stati
                     
                 }*/
     
-    return [StationData] ()
+    return stationDatas
 }
 
 func getRouteDetails(fromStation:String,toStation:String,isIntermediate:Bool) -> StationData
@@ -1088,7 +1090,10 @@ func getRouteDetails(fromStation:String,toStation:String,isIntermediate:Bool) ->
         let checkpoints:[StationModel] = getConnectingStations(fromStationModel: fromStationModel, toStationModel: toStationModel)
         var stationDatas:[StationData] = findOneIntersectinLanes(fromStationModel: fromStationModel, toStationModel: toStationModel,checkpointStations: checkpoints)
         
-        findTwoIntersectinLanes(fromStationModel: fromStationModel, toStationModel: toStationModel,checkpointStations: checkpoints)
+        
+        var stationDataTwo:[StationData] = findTwoIntersectinLanes(fromStationModel: fromStationModel, toStationModel: toStationModel,checkpointStations: checkpoints)
+        
+        stationDatas.insert(contentsOf: stationDataTwo, at: stationDatas.count)
         
         var totalstations:Int = 100
         var finalStationData:StationData = StationData()
@@ -1100,7 +1105,7 @@ func getRouteDetails(fromStation:String,toStation:String,isIntermediate:Bool) ->
                 totalstations = stationData.totalStations
             }
         }
-        
+        stationData.intermediateStations = finalStationData.intermediateStations
         print("final station data: \(finalStationData.intermediateStations)")
 
     }
