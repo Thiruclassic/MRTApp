@@ -36,7 +36,7 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
         fromStationName.inputView = UIView()
         toStationName.inputView = UIView()
         
-        
+        self.addBackGroundImage()
     
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
@@ -45,8 +45,9 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
         backgroundQueue.async {
             self.stations=readAllStations()
             createTables()
-            //dropTables()
-            self.addBackGroundImage()
+           // dropTables()
+           
+            
         }
         
     }
@@ -58,7 +59,7 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
     func addBackGroundImage()
     {
         UIGraphicsBeginImageContext(self.view.frame.size)
-        UIImage(named: "mrt.jpg")?.draw(in: self.view.bounds)
+        UIImage(named: "background.jpg")?.draw(in: self.view.bounds)
         
         let image: UIImage! = UIGraphicsGetImageFromCurrentImageContext()
         

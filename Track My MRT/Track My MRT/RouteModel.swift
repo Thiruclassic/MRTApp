@@ -12,10 +12,12 @@ class RouteModel {
     
     var fromStation : String
     var toStation : String
+    var coordinates : [String]!
     
     
     init() {
         fromStation = "";
         toStation = "";
+        coordinates = [String]()
     }
 }
