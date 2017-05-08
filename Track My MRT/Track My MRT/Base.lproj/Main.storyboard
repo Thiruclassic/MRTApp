@@ -358,21 +358,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6DS-6S-fON">
-                                <rect key="frame" x="-48" y="-26" width="382" height="745"/>
+                                <rect key="frame" x="-18" y="-25" width="352" height="743"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mrtGuide" translatesAutoresizingMaskIntoConstraints="NO" id="vxJ-IM-1cq">
-                                        <rect key="frame" x="128" y="206" width="149" height="120"/>
+                                        <rect key="frame" x="31" y="87" width="296" height="352"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <gestureRecognizers/>
                                     </imageView>
                                 </subviews>
+                                <color key="backgroundColor" red="0.8338279128074646" green="0.891307532787323" blue="0.84169214963912964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="Wty-JE-wgH" id="Ipr-PD-Phs"/>
                                 </connections>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.59589999914169312" green="0.72040337324142456" blue="0.8080870509147644" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="MRT Guide" image="train" id="lIw-KZ-2mZ" userLabel="third"/>
                     <connections>
