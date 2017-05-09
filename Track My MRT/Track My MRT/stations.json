@@ -83,7 +83,7 @@
                   {"name" : "Telok Blangah","stationCode" : "CTLB","distance" : "6.8","traveltime" : "64","latitude" : "1.270689","longitude" : "103.809876","station lane" : "CC","Color" : "Yellow","station line code" : " CC28"				},
                   
                   
-                  
+                  {"name" : "Little India" ,"stationCode" : "LTI","distance" : "6.3,14","traveltime" : "11,24","latitude" : "1.306315","longitude" : "103.84966","station lane" : "NE,DT","Color" : "Purple,Blue","station line code" : " NE7,DT12"},
                   {"name" : "Jurong East","stationCode" : "JUR","distance" : "0,32.5","traveltime" : "0,50","latitude" : "1.333134","longitude" : "103.742288","station lane" : "NS,EW","Color" : "Red,Green","station line code" : " NS1,EW24"												},
                   {"name" : "Buona Vista","stationCode" : "BNV","distance" : "25.9,8.5","traveltime" : "43,52","latitude" : "1.307301","longitude" : "103.790048","station lane" : "EW,CC","Color" : "Green,Yellow","station line code" : " EW21,CC22"					    },
                   {"name" : "Outram Park","stationCode" : "OTP","distance" : "21.3,2.6","traveltime" : "32,3","latitude" : "1.281435","longitude" : "103.839183","station lane" : "EW,NE","Color" : "Green,Purple","station line code" : "EW16,NE3"                       },
