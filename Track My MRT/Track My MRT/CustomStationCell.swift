@@ -15,4 +15,9 @@ class CustomStationCell:UITableViewCell
     
     @IBOutlet weak var stationLane:UILabel!
     
+    
+    @IBOutlet weak var image1: UIImageView!
+    
+    
+    
 }
