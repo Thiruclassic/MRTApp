@@ -993,7 +993,8 @@ func findOneIntersectinLanes(fromStationModel:StationModel, toStationModel:Stati
                 print("checkpoint station name \(checkpointStation.stationName)  \(totalStations)")
                 stationDatas.append(stationData)
                 
-                
+                stationData.intermediateLines.append(fromlane)
+                stationData.intermediateLines.append(toLane)
             }
         }
     }
@@ -1103,7 +1104,9 @@ func findTwoIntersectinLanes(fromStationModel:StationModel, toStationModel:Stati
                 //stationData.totalDistance = stationData.totalDistance + abs(subcheckpointtoDistance - checkpointToDistance)
                 stationData.totalDistance = stationData.totalDistance + abs(toStnDistance - checkpointToDistance)
                             
-            
+                stationData.intermediateLines.append(fromlane)
+                stationData.intermediateLines.append(subLane)
+                stationData.intermediateLines.append(toLane)
                 print("checkpoint station name \(checkpointStation.stationName)  \(subcheckpoint.stationName) \(totalStations)")
                 stationDatas.append(stationData)
                         }
@@ -1205,7 +1208,7 @@ func getRouteDetails(fromStation:String,toStation:String,isIntermediate:Bool) ->
         
         //isIntermediateLineFound = true
         
-        
+        stationData.intermediateLines.append(lane)
         interLinkStations.append(fromStation)
         
         if(isIntermediate)
@@ -1268,6 +1271,7 @@ func getRouteDetails(fromStation:String,toStation:String,isIntermediate:Bool) ->
         }
         stationData.intermediateStations = finalStationData.intermediateStations
         stationData.totalDistance = finalStationData.totalDistance
+        stationData.intermediateLines = finalStationData.intermediateLines
         print("finalstation distance \(stationData.totalDistance)")
         print("final station data: \(finalStationData.intermediateStations)")
 
@@ -1280,7 +1284,6 @@ func getRouteDetails(fromStation:String,toStation:String,isIntermediate:Bool) ->
     }
     print("final total stations \(stationData.totalStations)")
     
-    print("final total distance \(stationData.totalDistance)")
     
     stationData.fare = getFare(distance: stationData.totalDistance)
     // stationData.stationCode=codes[names.index(of: fromStation)!]
