@@ -9,7 +9,6 @@
 import Foundation
 
 
-
 func readAllStations() -> Array<String>
 {
     var stationArray = Array<String>()
@@ -21,7 +20,9 @@ func readAllStations() -> Array<String>
     {
         let name = String(describing: station[STATION_NAME]!)
         stationArray.append(name)
+        
     }
+
     stationArray.sort()
     return stationArray
 
