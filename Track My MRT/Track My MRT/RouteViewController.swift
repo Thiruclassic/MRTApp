@@ -35,7 +35,11 @@ class RouteViewController : UIViewController{
     @IBOutlet weak var intermediateStation3: UILabel!
     
     
+    @IBOutlet weak var fromSub: UILabel!
+    @IBOutlet weak var intermediateSub3: UILabel!
+    @IBOutlet weak var intermediateSub2: UILabel!
     
+    @IBOutlet weak var intermediateSub1: UILabel!
     @IBOutlet weak var intermediateStationImage1: UIImageView!
     
     
@@ -84,7 +88,7 @@ class RouteViewController : UIViewController{
         arrivalTimeLabel.text = stationData.arrivalTime
         nextArrivalTimeLabel.text = stationData.nxtTrainArrivalTime
         
-       
+        fromSub.text = "Take " + getLane(laneCode: stationData.intermediateLines[0])
         //intermediateStatusLabel.text = ""
         
         if(stationData.intermediateStations.count > 1)
@@ -96,12 +100,24 @@ class RouteViewController : UIViewController{
             intermediateStation3.isHidden = false
             intermediateStationImage2.isHidden = false
             intermediateStationImage3.isHidden = false
+            intermediateSub2.isHidden = false
+            intermediateSub3.isHidden = false
+            
+            intermediateSub2.text = " Board " + getLane(laneCode: stationData.intermediateLines[1])
+                
+            intermediateSub3.text = " Board " + getLane(laneCode: stationData.intermediateLines[2])
+            
         }
         else if(stationData.intermediateStations.count == 1)
         {
             intermediateStation1.text = stationData.intermediateStations[0]
+            intermediateStation1.text = intermediateStation1.text!
+            intermediateSub1.text = " Board " + getLane(laneCode: stationData.intermediateLines[1])
             intermediateStation1.isHidden = false
+            intermediateSub1.isHidden = false
             intermediateStationImage1.isHidden = false
+            
+            
         }
         
         
@@ -206,6 +222,32 @@ class RouteViewController : UIViewController{
     }
     
     
+}
+
+func getLane(laneCode:String) -> String
+{
+    if (laneCode == "DT")
+    {
+        return "DownTown Line"
+    }
+    else if (laneCode == "CC")
+    {
+        return "Circle Line"
+    }
+    else if (laneCode == "EW")
+    {
+        return "EastWest Line"
+    }
+     else if (laneCode == "NS")
+    {
+        return "North South Line"
+    }
+    
+    else if (laneCode == "NE")
+    {
+        return "North East Line"
+    }
+    return ""
 }
 
 
