@@ -1,35 +1,26 @@
 {
     "checkpoints":[
                    
-                   {"Check Point Name":"Jurong East","Check Point ID ":"1","Station Line Id":"EW,NS","Station Number":"EW24,NS1"		},
-                   {"Check Point Name":"Buona Vista","Check Point ID ":"2","Station Line Id":"EW,CC","Station Number":"EW21,CC22"		},
-                   {"Check Point Name":"Outram Park","Check Point ID ":"3","Station Line Id":"EW,NE","Station Number":"EW16,NE3"		},
-                   {"Check Point Name":"Bugis","Check Point ID ":"4","Station Line Id":"EW,DT","Station Number":"EW12,DT14"			},
-                   {"Check Point Name":"Paya Lebar","Check Point ID ":"5","Station Line Id":"EW,CC","Station Number":"EW8,CC9"		},
-        {"Check Point Name":"Tanah Merah","Check Point ID ":"6","Station Line Id":"EW","Station Number":"EW4"		},
-        {"Check Point Name":"Raffles Place","Check Point ID ":"7","Station Line Id":"EW,NS","Station Number":"EW14,NS26"		},
-            {"Check Point Name":"City Hall","Check Point ID ":"8","Station Line Id":"EW,NS","Station Number":"EW13,NS25"		},
-                   
-        {"Check Point Name":"Bishan","Check Point ID ":"2","Station Line Id":"NS,CC","Station Number":"NS17,CC15"			},
-        {"Check Point Name":"Newton","Check Point ID ":"3","Station Line Id":"NS,DT","Station Number":"NS21,DT11"			},
-    {"Check Point Name":"Dhoby Ghaut","Check Point ID ":"4","Station Line Id":"NS,NE,CC","Station Number":"NS24,NE6,CC1"		},
-            {"Check Point Name":"Marina Bay","Check Point ID ":"5","Station Line Id":"NS,CE","Station Number":"NS27,CE2"		},
-                  
-            {"Check Point Name":"Habour Front","Check Point ID ":"1","Station Line Id":"NE,CC","Station Number":"NE1,CC29"		},
-            {"Check Point Name":"China Town","Check Point ID ":"3","Station Line Id":"NE,DT","Station Number":"NE4,DT19"		},
-            {"Check Point Name":"Little India","Check Point ID ":"5","Station Line Id":"NE,DT","Station Number":"NE7,DT12"		},
-            {"Check Point Name":"Serangoon","Check Point ID ":"6","Station Line Id":"NE,CC","Station Number":"NE12,CC13"		},
-                {"Check Point Name":"Harbour Front","Check Point ID ":"1","Station Line Id":"CC","Station Number":"CC29"	},
-                    {"Check Point Name":"Botanic Garden","Check Point ID ":"3","Station Line Id":"CC","Station Number":"CC19"	},
-                  
-                   {"Check Point Name":"Promenade","Check Point ID ":"7","Station Line Id":"CC","Station Number":"CC4"			},
-                  
-                   {"Check Point Name":"Botanic Garden","Check Point ID ":"1","Station Line Id":"DT","Station Number":"DT9"	},
-                  
-                   {"Check Point Name":"Promenade","Check Point ID ":"5","Station Line Id":"DT","Station Number":"DT15"		},
-                   {"Check Point Name":"Bayfront","Check Point ID ":"6","Station Line Id":"DT,CE","Station Number":"DT16,CE1"}
-                
-        
+                   {"Check Point Name":"Jurong East","Check Point ID ":"1","Station Line Id":"EW,NS","Station Number":"EW24,NS1","distance":"32.5,0","traveltime":"50,0","Color":"Green,Red"},
+                   {"Check Point Name":"Buona Vista","Check Point ID ":"2","Station Line Id":"EW,CC","Station Number":"EW21,CC22","distance":"25.9,8.5","traveltime":"43,52","Color":"Green,Yellow"	},
+                   {"Check Point Name":"Outram Park","Check Point ID ":"3","Station Line Id":"EW,NE","Station Number":"EW16,NE3","distance":"21.3,2.6","traveltime":"32,3","Color":"Green,Purple"},
+                   {"Check Point Name":"Bugis","Check Point ID ":"4","Station Line Id":"EW,DT","Station Number":"EW12,DT14","distance":"17.1,15.3","traveltime":"23,28","Color":"Green,Blue"	},
+                   {"Check Point Name":"Paya Lebar","Check Point ID ":"5","Station Line Id":"EW,CC","Station Number":"EW8,CC9","distance":"12.4,6.8","traveltime":"15,16","Color":"Green,Yellow"	},
+                   {"Check Point Name":"Tanah Merah","Check Point ID ":"6","Station Line Id":"EW,CG","Station Number":"EW4,CG","distance":"6.3,0","traveltime":"7,0","Color":"Green,Yellow"	},
+                   {"Check Point Name":"Raffles Place","Check Point ID ":"7","Station Line Id":"EW,NS","Station Number":"EW14,NS26","distance":"19.2,15.2","traveltime":"27,62","Color":"Green,Red"	},
+                   {"Check Point Name":"City Hall","Check Point ID ":"8","Station Line Id":"EW,NS","Station Number":"EW13,NS25","distance":"18.1,16.1","traveltime":"25,60","Color":"Green,Red"	},
+                   {"Check Point Name":"Bishan","Check Point ID ":"2","Station Line Id":"NS,CC","Station Number":"NS17,CC15","distance":"16.6,7.1","traveltime":"41,33","Color":"Red,Yellow"	},
+                   {"Check Point Name":"Newton","Check Point ID ":"3","Station Line Id":"NS,DT","Station Number":"NS21,DT11","distance":"12.7,12.5","traveltime":"50,25","Color":"Red,Blue"	},
+                   {"Check Point Name":"Dhoby Ghaut","Check Point ID ":"4","Station Line Id":"NS,NE,CC","Station Number":"NS24,NE6,CC1","distance":"15.1,5.3,0","traveltime":"57,9,0","Color":"Red,Purple,Yellow"},
+                   {"Check Point Name":"Marina Bay","Check Point ID ":"5","Station Line Id":"NS,CE","Station Number":"NS27,CE2","distance":"16.1,3","traveltime":"64,72","Color":"Red,Yellow"	},
+                   {"Check Point Name":"Habour Front","Check Point ID ":"1","Station Line Id":"NE,CC","Station Number":"NE1,CC29","distance":"0,5.3","traveltime":"0,66","Color":"Purple,Yellow"	},
+                   {"Check Point Name":"China Town","Check Point ID ":"3","Station Line Id":"NE,DT","Station Number":"NE4,DT19","distance":"3.4,16.9","traveltime":"5,39","Color":"Purple,Blue"	},
+                   {"Check Point Name":"Little India","Check Point ID ":"5","Station Line Id":"NE,DT","Station Number":"NE7,DT12","distance":"6.3,14","traveltime":"11,24","Color":"Purple,Blue"	},
+                   {"Check Point Name":"Serangoon","Check Point ID ":"6","Station Line Id":"NE,CC","Station Number":"NE12,CC13","distance":"12,6.6","traveltime":"21,25","Color":"Purple,Yellow"	},
+                   {"Check Point Name":"Harbour Front","Check Point ID ":"1","Station Line Id":"NE,CC","Station Number":"NE1,CC29","distance":"0,5.3","traveltime":"0,66","Color":"Purple,Yellow"	},
+                   {"Check Point Name":"Botanic Garden","Check Point ID ":"3","Station Line Id":"CC,DT","Station Number":"CC19,DT9","distance":"5.1,9.8","traveltime":"43,15","Color":"Yellow,Blue"	},
+                   {"Check Point Name":"Promenade","Check Point ID ":"7","Station Line Id":"CC,DT","Station Number":"CC4,DT15","distance":"2.1,16.2","traveltime":"6,30","Color":"Yellow,Blue"	},
+                   {"Check Point Name":"Bayfront","Check Point ID ":"6","Station Line Id":"DT,CE","Station Number":"DT16,CE1","distance":"17.5,0","traveltime":"33,0","Color":"Blue,Yellow"}      
 
                    ]
 }
