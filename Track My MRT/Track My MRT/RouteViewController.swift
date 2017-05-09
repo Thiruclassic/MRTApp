@@ -27,11 +27,26 @@ class RouteViewController : UIViewController{
 
     @IBOutlet weak var fareLabel: UILabel!
     
-    @IBOutlet weak var intermediateStatusLabel: UILabel!
 
+    @IBOutlet weak var intermediateStation1: UILabel!
 
+    @IBOutlet weak var intermediateStation2: UILabel!
+
+    @IBOutlet weak var intermediateStation3: UILabel!
+    
+    
+    
+    @IBOutlet weak var intermediateStationImage1: UIImageView!
+    
+    
+    @IBOutlet weak var intermediateStationImage2: UIImageView!
+    
+    @IBOutlet weak var intermediateStationImage3: UIImageView!
+    
+    
     @IBOutlet weak var toStationLabel: UILabel!
     
+    @IBOutlet weak var fromStationImage: UIImageView!
    
     @IBAction func share(_ sender: Any) {
         let bounds = UIScreen.main.bounds
@@ -70,14 +85,26 @@ class RouteViewController : UIViewController{
         nextArrivalTimeLabel.text = stationData.nxtTrainArrivalTime
         
        
-            intermediateStatusLabel.text = ""
+        //intermediateStatusLabel.text = ""
         
-        for intermediateStation in stationData.intermediateStations
+        if(stationData.intermediateStations.count > 1)
         {
-
-            intermediateStatusLabel.text! = intermediateStatusLabel.text! + "Get down at " + intermediateStation + " "
-
+            fareLabel.isHidden = true
+            intermediateStation2.text = stationData.intermediateStations[0]
+            intermediateStation3.text = stationData.intermediateStations[1]
+            intermediateStation2.isHidden = false
+            intermediateStation3.isHidden = false
+            intermediateStationImage2.isHidden = false
+            intermediateStationImage3.isHidden = false
         }
+        else if(stationData.intermediateStations.count == 1)
+        {
+            intermediateStation1.text = stationData.intermediateStations[0]
+            intermediateStation1.isHidden = false
+            intermediateStationImage1.isHidden = false
+        }
+        
+        
         
         
         readStationArrivalTime(stnCode: stationData.stationCode,stnDirectionId: stationData.stationDirectionId)

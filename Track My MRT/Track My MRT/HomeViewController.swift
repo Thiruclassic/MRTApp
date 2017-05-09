@@ -21,7 +21,10 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
     let backgroundQueue = DispatchQueue.global(qos: .background)
     
     
+    
+    
     var stations:Array = [""]
+    var tempStations:Array = [""]
     
     var selectedStations = RouteModel()
     
@@ -45,7 +48,7 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
         backgroundQueue.async {
             self.stations=readAllStations()
             createTables()
-           // dropTables()
+            //dropTables()
            
             
         }
@@ -65,7 +68,7 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
         
         UIGraphicsEndImageContext()
         
-        self.view.backgroundColor = UIColor(patternImage: image)
+        //self.view.backgroundColor = UIColor(patternImage: image)
     }
     
     @IBAction func showRoute(_ sender: UIButton) {
@@ -102,6 +105,7 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
     
     @IBAction func showFromDropDown()
     {
+        fromDropDown.cellForRow(at: IndexPath(row: 0, section: 0))?.removeFromSuperview()
         fromDropDown.isHidden=false
         fromDropDown.reloadData()
         
@@ -127,7 +131,8 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:CustomStationCell!
+        var cell:CustomStationCell!
+       
         if(tableView==self.fromDropDown)
         {
          cell=self.fromDropDown.dequeueReusableCell(withIdentifier: FROM_TABLE_CELL_ID) as! CustomStationCell
@@ -138,21 +143,19 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
         }
         
         
+        //fromStationImage.image = UIImage(imageLiteralResourceName: "redTrain")
         let color = UIColor.white
         cell?.backgroundColor = color
-
         //print(tableView.restorationIdentifier!)
        
         
         let stationName=stations[indexPath.row] as String
-                cell.stationLabel.text=stationName
-        
-        
+        cell.stationLabel.text=stationName
+
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print(stations.count)
         return stations.count
     }
     
