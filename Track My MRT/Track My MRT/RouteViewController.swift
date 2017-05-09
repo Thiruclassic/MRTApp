@@ -89,7 +89,6 @@ class RouteViewController : UIViewController{
         nextArrivalTimeLabel.text = stationData.nxtTrainArrivalTime
         
         fromSub.text = "Take " + getLane(laneCode: stationData.intermediateLines[0])
-        //intermediateStatusLabel.text = ""
         
         if(stationData.intermediateStations.count > 1)
         {
@@ -160,7 +159,7 @@ class RouteViewController : UIViewController{
             (data, response, error) in
             guard error == nil else {
                 print("error calling POST on API")
-                print(error)
+                print(error ?? "error")
                 return
             }
             
@@ -170,8 +169,8 @@ class RouteViewController : UIViewController{
             }
             
             
-            let httpStatus = response as? HTTPURLResponse
-            print("status: \(httpStatus?.statusCode)")
+            //let httpStatus = response as? HTTPURLResponse
+            
             // parse the result as JSON, since that's what the API provides
             do {
                 guard let receivedMRTData = try JSONSerialization.jsonObject(with: responseData,

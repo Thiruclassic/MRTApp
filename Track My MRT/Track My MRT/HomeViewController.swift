@@ -68,7 +68,7 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
         
         UIGraphicsEndImageContext()
         
-        //self.view.backgroundColor = UIColor(patternImage: image)
+        self.view.backgroundColor = UIColor(patternImage: image)
     }
     
     @IBAction func showRoute(_ sender: UIButton) {
@@ -131,7 +131,6 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
         fromDropDown.cellForRow(at: IndexPath(row: 0, section: 0))?.removeFromSuperview()
         fromDropDown.isHidden=false
         fromDropDown.reloadData()
-        
     }
     
     @IBAction func showToDropDown()
@@ -142,7 +141,6 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
     }
     @IBAction func hideDropDown()
     {
-        print("textfield hide func")
         fromDropDown.isHidden=true
         toDropDown.isHidden=true;
         
@@ -165,12 +163,9 @@ class HomeViewController: UIViewController, UISplitViewControllerDelegate,UITabl
         cell=self.toDropDown.dequeueReusableCell(withIdentifier: TO_TABLE_CELL_ID) as! CustomStationCell
         }
         
-        
-        //fromStationImage.image = UIImage(imageLiteralResourceName: "redTrain")
         let color = UIColor.white
         cell?.backgroundColor = color
-        //print(tableView.restorationIdentifier!)
-       
+        
         
         let stationName=stations[indexPath.row] as String
         cell.stationLabel.text=stationName

@@ -46,12 +46,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate,MFMessageCo
         mapHeight = view.bounds.height - 150
         locateStations(self.selectedStations.fromStation)
         locateStations(self.selectedStations.toStation)
-        /*if(!(self.selectedStations.fromStation.isEmpty && self.selectedStations.toStation.isEmpty)) {
-            let stationData = getStationlocationData(fromStation: self.selectedStations.fromStation,
-                                                     toStation: self.selectedStations.toStation)
-            locateStations(stationName: stationData.fromStation, latitude: stationData.coordinates[1], Longitude: stationData.coordinates[0])
-            locateStations(stationName: stationData.toStation, latitude: stationData.coordinates[2], Longitude: stationData.coordinates[3])
-        }*/
         
         locationManager.startUpdatingLocation()
         
@@ -77,14 +71,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate,MFMessageCo
         locationManager.stopUpdatingLocation()
     }
     
-   /* private func locateStations(stationName: String, latitude: String, Longitude: String) {
-            let lat = Double(latitude)
-            let lon = Double(Longitude)
-            let coordinates = CLLocationCoordinate2DMake(lat!, lon!)
-            let marker = GMSMarker(position: coordinates)
-            marker.title = stationName
-            marker.map = self.mapView
-    } */
     
     private func locateStations(_ address: String) {
         

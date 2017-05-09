@@ -40,7 +40,7 @@ func readJSONData(fileName:String,fileType:String,rootElement:String) -> [NSDict
     let  jsonData=try? NSData(contentsOfFile: path!, options: NSData.ReadingOptions.mappedIfSafe)
     
     
-    let jsonResult:NSDictionary = try! JSONSerialization.jsonObject(with: jsonData as! Data , options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+    let jsonResult:NSDictionary = try! JSONSerialization.jsonObject(with: jsonData! as Data , options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
     
     
     
