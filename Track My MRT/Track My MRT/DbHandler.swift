@@ -218,11 +218,13 @@ func createCheckpointData()
         let checkpointName=checkpoint[CHECKPOINT_NAME] as? NSString
         let stationLineID=checkpoint[CHECKPOINT_STATION_LINE_ID] as? NSString
         let stationNo=checkpoint[CHECKPOINT_STATION_ID] as? NSString
+        let totalDistance=checkpoint[CHECKPOINT_DISTANCE] as? NSString
     
         
         sqlite3_bind_text(insertStatement, 1, checkpointName!.utf8String, -1, SQLITE_TRANSIENT);
         sqlite3_bind_text(insertStatement, 2, stationLineID!.utf8String , -1, SQLITE_TRANSIENT);
         sqlite3_bind_text(insertStatement, 3, stationNo!.utf8String , -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(insertStatement, 4, totalDistance!.utf8String , -1, SQLITE_TRANSIENT);
         
         
         count=count+1
@@ -381,7 +383,7 @@ func createStationData()
 }
 
 
-func getsampleRouteDetails(fromStation:String,toStation:String,isIntermediate:Bool) -> StationData
+/*func getsampleRouteDetails(fromStation:String,toStation:String,isIntermediate:Bool) -> StationData
 {
     
     
@@ -786,7 +788,7 @@ func getConnectingLane(lanes: [String]) -> [String]
     return intermediateStations
     
 }
-
+*/
 func removeDuplicates(array:[String]) -> [String]
 {
     var items:[String] = [String] ()
@@ -910,6 +912,11 @@ func getConnectingStations(fromStationModel:StationModel, toStationModel:Station
             checkPointStation.stationLaneCodes = lanearr
             //print("checkpoint laneid \(laneId)")
             
+            let distance_buf = sqlite3_column_text(selectStatement, 3)
+            let distance = String(cString: distance_buf!)
+            let distArr:[String] = distance.components(separatedBy: ",")
+            checkPointStation.stationDistance = distArr
+            
             checkPointStations.append(checkPointStation)
             
             
@@ -949,9 +956,11 @@ func findOneIntersectinLanes(fromStationModel:StationModel, toStationModel:Stati
             if(checkpointStation.stationLaneCodes.contains(fromlane) && checkpointStation.stationLaneCodes.contains(toLane))
             {
                 
+                
+                
                 let stationData:StationData = StationData()
                 stationData.fromStation = fromStationModel.stationName
-                print(checkpointStation.stationLaneCodes)
+                //print(checkpointStation.stationLaneCodes)
                 
                 
                 let fromLaneId:String = checkpointStation.stationLineCodes[checkpointStation.stationLaneCodes.index(of: fromlane)!]
@@ -969,6 +978,18 @@ func findOneIntersectinLanes(fromStationModel:StationModel, toStationModel:Stati
                 totalStations = totalStations + abs(fromCheckpointNo - fromStationNo)
                 totalStations = totalStations + abs(toCheckpointNo - toStationNo)
                 stationData.totalStations = totalStations
+               
+                let fromStationDistance:Double! = Double(fromStationModel.stationDistance[fromStationModel.stationLaneCodes.index(of: fromlane)!])
+                
+                print(checkpointStation.stationLaneCodes)
+                print(checkpointStation.stationDistance)
+                let checkpointFromDistance:Double! = Double(checkpointStation.stationDistance[checkpointStation.stationLaneCodes.index(of: fromlane)!])
+                
+                let checkpointToDistance:Double! = Double(checkpointStation.stationDistance[checkpointStation.stationLaneCodes.index(of: toLane)!])
+                
+                let toDistance:Double! = Double(toStationModel.stationDistance[toStationModel.stationLaneCodes.index(of: toLane)!])
+                
+                stationData.totalDistance = abs(fromStationDistance - checkpointFromDistance) + abs(toDistance - checkpointToDistance)
                 print("checkpoint station name \(checkpointStation.stationName)  \(totalStations)")
                 stationDatas.append(stationData)
                 
@@ -1049,6 +1070,9 @@ func findTwoIntersectinLanes(fromStationModel:StationModel, toStationModel:Stati
                 let fromSubStationNo:Int! = Int(fromMidLaneId.replacingOccurrences(of: fromlane, with: ""))
                 
                 let toStationNo:Int! = Int(toStationModel.stationLineCodes[toStationModel.stationLaneCodes.index(of: toLane)!].replacingOccurrences(of: toLane, with: ""))
+                            
+                            
+                            
                 
                 var totalStations:Int = 0
                 stationData.intermediateStations.append(checkpointStation.stationName)
@@ -1056,6 +1080,30 @@ func findTwoIntersectinLanes(fromStationModel:StationModel, toStationModel:Stati
                 totalStations = totalStations + abs(fromSubStationNo - fromStationNo) + abs (fromsubCheckpointNo - toSubCheckpointNo)
                 totalStations = totalStations + abs(toCheckpointNo - toStationNo)
                 stationData.totalStations = totalStations
+                            
+                            
+                            
+                let fromStnDistance:Double! = Double(fromStationModel.stationDistance[fromStationModel.stationLaneCodes.index(of: fromlane)!])
+                            
+                let checkpointFromDistance:Double! = Double(checkpointStation.stationDistance[checkpointStation.stationLaneCodes.index(of: fromlane)!])
+                            
+                let subcheckpointFromDistance:Double! = Double(checkpointStation.stationDistance[checkpointStation.stationLaneCodes.index(of: subLane)!])
+
+                let subcheckpointtoDistance:Double! = Double(subcheckpoint.stationDistance[subcheckpoint.stationLaneCodes.index(of: subLane)!])
+
+                            
+                let checkpointToDistance:Double! = Double(subcheckpoint.stationDistance[subcheckpoint.stationLaneCodes.index(of: toLane)!])
+                            
+                let toStnDistance:Double! = Double(toStationModel.stationDistance[toStationModel.stationLaneCodes.index(of: toLane)!])
+                            
+                print("\(fromStnDistance) \(checkpointFromDistance) \(subcheckpointFromDistance) \(subcheckpointtoDistance) \(checkpointToDistance) \(toStnDistance)")
+                            
+                stationData.totalDistance = abs(fromStnDistance - checkpointFromDistance)
+                stationData.totalDistance = stationData.totalDistance + abs(subcheckpointtoDistance - subcheckpointFromDistance)
+                //stationData.totalDistance = stationData.totalDistance + abs(subcheckpointtoDistance - checkpointToDistance)
+                stationData.totalDistance = stationData.totalDistance + abs(toStnDistance - checkpointToDistance)
+                            
+            
                 print("checkpoint station name \(checkpointStation.stationName)  \(subcheckpoint.stationName) \(totalStations)")
                 stationDatas.append(stationData)
                         }
@@ -1219,10 +1267,13 @@ func getRouteDetails(fromStation:String,toStation:String,isIntermediate:Bool) ->
             }
         }
         stationData.intermediateStations = finalStationData.intermediateStations
+        stationData.totalDistance = finalStationData.totalDistance
+        print("finalstation distance \(stationData.totalDistance)")
         print("final station data: \(finalStationData.intermediateStations)")
 
     }
     
+
     if(stationData.stationDirectionId == nil)
     {
         stationData.stationDirectionId = 1
